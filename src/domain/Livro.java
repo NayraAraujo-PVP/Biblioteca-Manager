@@ -57,11 +57,14 @@ public class Livro {
         return quantidadeDisponivel;
     }
 
-    public boolean retirarUmDisponivel() {
-        if(quantidadeDisponivel == 0) return false;
+    public boolean verificaDisponivel() {
+        return quantidadeDisponivel > 0;
+    }
 
-        quantidadeDisponivel--;
-        return true;
+    public void retirarUmDisponivel() {
+        if(verificaDisponivel()) {
+            quantidadeDisponivel--;
+        }
     }
 
     public boolean adicionarUmDisponivel() {

@@ -29,6 +29,12 @@ public class Docente extends Usuario {
     }
 
     @Override
+    public boolean verificaLimiteEmprestimos() {
+        int limiteEmprestimos = 8;
+        return getEmprestimos().size() < limiteEmprestimos;
+    }
+
+    @Override
     public int calculaDiasAtraso(int diasPermanenciaLivro) {
         int prazoPermanencia = 30;
         int diasDeAtraso = diasPermanenciaLivro - prazoPermanencia;

@@ -30,8 +30,12 @@ public abstract class Usuario {
     }
 
     public void addEmprestimo(Emprestimo emprestimo) {
-        emprestimos.add(emprestimo);
+        if(verificaLimiteEmprestimos()) {
+            emprestimos.add(emprestimo);
+        }
     }
+
+    public abstract boolean verificaLimiteEmprestimos();
 
     public void removeEmprestimo(Emprestimo emprestimo) {
         emprestimos.remove(emprestimo);

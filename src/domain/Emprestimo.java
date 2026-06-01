@@ -51,7 +51,7 @@ public class Emprestimo {
         this.dataDevolucao = dataDevolucao;
         devolvido = true;
 
-        int diasPermanenciaLivro = (int) dataRetirada.toInstant().until(dataDevolucao.toInstant()).get(ChronoUnit.DAYS);
+        int diasPermanenciaLivro = (int) ChronoUnit.DAYS.between(dataRetirada.toInstant(), dataDevolucao.toInstant());
         int diasDeAtraso = usuario.calculaDiasAtraso(diasPermanenciaLivro);
         valorMulta = usuario.calculaMulta(diasDeAtraso);
     }
