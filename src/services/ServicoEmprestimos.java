@@ -20,7 +20,7 @@ public class ServicoEmprestimos {
             Emprestimo emprestimo = new Emprestimo(id, usuario, livro, new Date());
 
             usuario.addEmprestimo(emprestimo);
-            livro.retirarUmDisponivel();
+            livro.adicionarUmEmprestado();
 
             repositorioEmprestimos.salvar(emprestimo);
         }
@@ -36,6 +36,6 @@ public class ServicoEmprestimos {
         emprestimo.registrarDevolucao(new Date());
 
         emprestimo.getUsuario().removeEmprestimo(emprestimo);
-        emprestimo.getLivro().adicionarUmDisponivel();
+        emprestimo.getLivro().retirarUmEmprestado();
     }
 }

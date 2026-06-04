@@ -6,7 +6,7 @@ public class Livro {
     private String autor;
     private String categoria;
     private int quantidadeTotal;
-    private int quantidadeDisponivel;
+    private int quantidadeEmprestada;
 
     public Livro(int id, String titulo, String autor, String categoria, int quantidadeTotal) {
         this.id = id;
@@ -14,7 +14,7 @@ public class Livro {
         this.autor = autor;
         this.categoria = categoria;
         this.quantidadeTotal = quantidadeTotal;
-        quantidadeDisponivel = quantidadeTotal;
+        quantidadeEmprestada = 0;
     }
 
     public int getId() {
@@ -53,24 +53,23 @@ public class Livro {
         this.quantidadeTotal = quantidadeTotal;
     }
 
-    public int getQuantidadeDisponivel() {
-        return quantidadeDisponivel;
+    public int getQuantidadeEmprestada() {
+        return quantidadeEmprestada;
     }
 
     public boolean verificaDisponivel() {
-        return quantidadeDisponivel > 0;
+        return quantidadeEmprestada < quantidadeTotal;
     }
 
-    public void retirarUmDisponivel() {
+    public void adicionarUmEmprestado() {
         if(verificaDisponivel()) {
-            quantidadeDisponivel--;
+            quantidadeEmprestada++;
         }
     }
 
-    public boolean adicionarUmDisponivel() {
-        if(quantidadeDisponivel == quantidadeTotal) return false;
-
-        quantidadeDisponivel++;
-        return true;
+    public void retirarUmEmprestado() {
+        if(quantidadeEmprestada > 0) {
+            quantidadeEmprestada--;
+        }
     }
 }

@@ -1,12 +1,9 @@
 import domain.Docente;
-import domain.Emprestimo;
 import domain.Livro;
 import domain.Usuario;
 import domain.enums.TitulacaoAcademica;
 import repository.RepositorioEmprestimos;
 import services.ServicoEmprestimos;
-
-import java.util.Date;
 
 public class Test {
     public static void main(String[] args) {
@@ -18,12 +15,12 @@ public class Test {
 
         servicoEmprestimos.realizarEmprestimo(nay, abc);
 
-        System.out.println(abc.getQuantidadeDisponivel());
+        System.out.println(abc.getQuantidadeEmprestada());
         System.out.println(nay.getEmprestimos().size());
 
         servicoEmprestimos.realizarDevolucao(0);
 
-        System.out.println(abc.getQuantidadeDisponivel());
+        System.out.println(abc.getQuantidadeEmprestada());
         System.out.println(nay.getEmprestimos().size());
     }
 }
