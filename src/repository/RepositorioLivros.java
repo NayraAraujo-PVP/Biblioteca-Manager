@@ -1,15 +1,16 @@
 package repository;
 
 import domain.Livro;
+import entities.EntidadeLivro;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class RepositorioLivros {
-    private final Map<Integer, Livro> livroMap = new HashMap<>();
+    private final Map<Integer, EntidadeLivro> livroMap = new HashMap<>();
 
     public void salvar(Livro livro) {
-        livroMap.put(livro.getId(), livro);
+        livroMap.put(livro.getId(), EntidadeLivro.converterParaEntidade(livro));
     }
 
     public boolean contemId(int id) {
@@ -17,7 +18,7 @@ public class RepositorioLivros {
     }
 
     public Livro buscar(int id) {
-        return livroMap.get(id);
+        return livroMap.get(id).converterParaLivro();
     }
 
     public int getProximoId() {

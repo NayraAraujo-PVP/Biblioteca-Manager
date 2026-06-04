@@ -17,6 +17,15 @@ public class Livro {
         quantidadeEmprestada = 0;
     }
 
+    public Livro(int id, String titulo, String autor, String categoria, int quantidadeTotal, int quantidadeEmprestada) {
+        this.id = id;
+        this.titulo = titulo;
+        this.autor = autor;
+        this.categoria = categoria;
+        this.quantidadeTotal = quantidadeTotal;
+        this.quantidadeEmprestada = quantidadeEmprestada;
+    }
+
     public int getId() {
         return id;
     }

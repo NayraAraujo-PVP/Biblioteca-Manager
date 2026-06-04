@@ -25,6 +25,8 @@ public class ServicoLivros {
         if(quantidadeTotal < livro.getQuantidadeEmprestada()) return;
 
         livro.setQuantidadeTotal(quantidadeTotal);
+
+        repositorioLivros.salvar(livro);
     }
 
     public void editarLivro(int id, String titulo, String autor, String categoria) {
@@ -35,5 +37,7 @@ public class ServicoLivros {
         livro.setTitulo(titulo);
         livro.setAutor(autor);
         livro.setCategoria(categoria);
+
+        repositorioLivros.salvar(livro);
     }
 }
