@@ -1,16 +1,14 @@
 package domain;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public abstract class Usuario {
     private String nome;
     private final String cpf;
-    private final List<Emprestimo> emprestimos = new ArrayList<>();
+    private int emprestimosAtivos;
 
     protected Usuario(String cpf, String nome) {
         this.cpf = cpf;
         this.nome = nome;
+        emprestimosAtivos = 0;
     }
 
     public String getNome() {
@@ -25,20 +23,22 @@ public abstract class Usuario {
         return cpf;
     }
 
-    public List<Emprestimo> getEmprestimos() {
-        return List.copyOf(emprestimos);
+    public int getEmprestimosAtivos() {
+        return emprestimosAtivos;
     }
 
-    public void addEmprestimo(Emprestimo emprestimo) {
+    public void addEmprestimo() {
         if(verificaLimiteEmprestimos()) {
-            emprestimos.add(emprestimo);
+            emprestimosAtivos++;
         }
     }
 
     public abstract boolean verificaLimiteEmprestimos();
 
-    public void removeEmprestimo(Emprestimo emprestimo) {
-        emprestimos.remove(emprestimo);
+    public void removeEmprestimo() {
+        if(emprestimosAtivos > 0) {
+            emprestimosAtivos--;
+        }
     }
 
     public abstract int calculaDiasAtraso(int diasPermanenciaLivro);

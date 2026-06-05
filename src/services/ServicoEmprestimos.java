@@ -19,7 +19,7 @@ public class ServicoEmprestimos {
             int id = repositorioEmprestimos.getProximoId();
             Emprestimo emprestimo = new Emprestimo(id, usuario, livro, new Date());
 
-            usuario.addEmprestimo(emprestimo);
+            usuario.addEmprestimo();
             livro.adicionarUmEmprestado();
 
             repositorioEmprestimos.salvar(emprestimo);
@@ -35,7 +35,7 @@ public class ServicoEmprestimos {
 
         emprestimo.registrarDevolucao(new Date());
 
-        emprestimo.getUsuario().removeEmprestimo(emprestimo);
+        emprestimo.getUsuario().removeEmprestimo();
         emprestimo.getLivro().retirarUmEmprestado();
     }
 }

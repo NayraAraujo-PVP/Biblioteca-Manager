@@ -19,7 +19,7 @@ public class Aluno extends Usuario {
     @Override
     public boolean verificaLimiteEmprestimos() {
         int limiteEmprestimos = 4;
-        return getEmprestimos().size() < limiteEmprestimos;
+        return getEmprestimosAtivos() < limiteEmprestimos;
     }
 
     @Override

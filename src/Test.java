@@ -16,11 +16,11 @@ public class Test {
         servicoEmprestimos.realizarEmprestimo(nay, abc);
 
         System.out.println(abc.getQuantidadeEmprestada());
-        System.out.println(nay.getEmprestimos().size());
+        System.out.println(nay.getEmprestimosAtivos());
 
         servicoEmprestimos.realizarDevolucao(0);
 
         System.out.println(abc.getQuantidadeEmprestada());
-        System.out.println(nay.getEmprestimos().size());
+        System.out.println(nay.getEmprestimosAtivos());
     }
 }
