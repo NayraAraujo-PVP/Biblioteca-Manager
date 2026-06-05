@@ -12,6 +12,12 @@ public class Docente extends Usuario {
         this.titulacaoAcademica = titulacaoAcademica;
     }
 
+    public Docente(String nome, String cpf, int emprestimosAtivos, String departamento, TitulacaoAcademica titulacaoAcademica) {
+        super(nome, cpf, emprestimosAtivos);
+        this.departamento = departamento;
+        this.titulacaoAcademica = titulacaoAcademica;
+    }
+
     public String getDepartamento() {
         return departamento;
     }

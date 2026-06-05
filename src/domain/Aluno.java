@@ -8,6 +8,11 @@ public class Aluno extends Usuario {
         this.matricula = matricula;
     }
 
+    public Aluno(String nome, String cpf, int emprestimosAtivos, String matricula) {
+        super(nome, cpf, emprestimosAtivos);
+        this.matricula = matricula;
+    }
+
     public String getMatricula() {
         return matricula;
     }

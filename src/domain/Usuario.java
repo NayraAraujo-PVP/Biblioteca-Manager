@@ -11,6 +11,12 @@ public abstract class Usuario {
         emprestimosAtivos = 0;
     }
 
+    public Usuario(String nome, String cpf, int emprestimosAtivos) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.emprestimosAtivos = emprestimosAtivos;
+    }
+
     public String getNome() {
         return nome;
     }
