@@ -3,24 +3,31 @@ import domain.Livro;
 import domain.Usuario;
 import domain.enums.TitulacaoAcademica;
 import repository.RepositorioEmprestimos;
+import repository.RepositorioLivros;
+import repository.RepositorioUsuarios;
 import services.ServicoEmprestimos;
+import services.ServicoLivros;
+import services.ServicoUsuarios;
 
 public class Test {
     public static void main(String[] args) {
-        Usuario nay = new Docente("123456789", "nay1", "DDN", TitulacaoAcademica.MESTRE);
-        Livro abc = new Livro(12, "abc", "nay2", "cba", 2);
+        RepositorioLivros repositorioLivros = new RepositorioLivros();
+        ServicoLivros servicoLivros = new ServicoLivros(repositorioLivros);
+        RepositorioUsuarios repositorioUsuarios = new RepositorioUsuarios();
+        ServicoUsuarios servicoUsuarios = new ServicoUsuarios(repositorioUsuarios);
 
-        RepositorioEmprestimos repositorioEmprestimos = new RepositorioEmprestimos();
-        ServicoEmprestimos servicoEmprestimos = new ServicoEmprestimos(repositorioEmprestimos);
+        servicoLivros.cadastrarLivro("A casa de hades", "Rick riordan", "Paradidatico", 4);
+        System.out.println(repositorioLivros.buscar(0).getTitulo());
 
-        servicoEmprestimos.realizarEmprestimo(nay, abc);
+        servicoLivros.editarLivro(0, "A casa de Hades", "Rick riordan", "Paradidatico");
+        System.out.println(repositorioLivros.buscar(0).getTitulo());
 
-        System.out.println(abc.getQuantidadeEmprestada());
-        System.out.println(nay.getEmprestimosAtivos());
+        servicoUsuarios.cadastrarAluno("123.456.789-12", "kira", "202610509");
+        System.out.println(repositorioUsuarios.buscarUsuario("123.456.789-12").getNome());
 
-        servicoEmprestimos.realizarDevolucao(0);
+        servicoUsuarios.editarAluno("123.456.789-12", "Kira", "202610509");
+        System.out.println(repositorioUsuarios.buscarUsuario("123.456.789-12").getNome());
 
-        System.out.println(abc.getQuantidadeEmprestada());
-        System.out.println(nay.getEmprestimosAtivos());
+
     }
 }
