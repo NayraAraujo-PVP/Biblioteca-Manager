@@ -13,5 +13,9 @@ public abstract class EntidadeUsuario {
         this.emprestimosAtivos = emprestimosAtivos;
     }
 
+    public String getCpf() {
+        return cpf;
+    }
+
     public abstract Usuario converterParaUsuario();
 }

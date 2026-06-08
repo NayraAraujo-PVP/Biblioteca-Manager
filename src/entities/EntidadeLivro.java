@@ -19,6 +19,10 @@ public class EntidadeLivro {
         this.quantidadeEmprestada = quantidadeEmprestada;
     }
 
+    public int getId() {
+        return id;
+    }
+
     public Livro converterParaLivro() {
         return new Livro(id, titulo, autor, categoria, quantidadeTotal, quantidadeEmprestada);
     }

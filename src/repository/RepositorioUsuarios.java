@@ -1,5 +1,6 @@
 package repository;
 
+import datamanager.DataManager;
 import domain.Aluno;
 import domain.Docente;
 import domain.Livro;
@@ -11,12 +12,35 @@ import entities.EntidadeUsuario;
 
 import javax.print.Doc;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class RepositorioUsuarios {
     private final Map<String, EntidadeAluno> alunoMap = new HashMap<>();
     private final Map<String, EntidadeDocente> docenteMap = new HashMap<>();
     private final Map<String, EntidadeUsuario> usuarioMap = new HashMap<>();
+
+    private final DataManager dataManager;
+
+    private static final String ALUNOS_FILENAME = "alunos";
+    private static final String DOCENTES_FILENAME = "docentes";
+
+    public RepositorioUsuarios(DataManager dataManager) {
+        this.dataManager = dataManager;
+
+        List<EntidadeAluno> entidadeAlunoList = dataManager.buscar(ALUNOS_FILENAME);
+        List<EntidadeDocente> entidadeDocenteList = dataManager.buscar(DOCENTES_FILENAME);
+
+        for (EntidadeAluno entidadeAluno : entidadeAlunoList) {
+            alunoMap.put(entidadeAluno.getCpf(), entidadeAluno);
+            usuarioMap.put(entidadeAluno.getCpf(), entidadeAluno);
+        }
+
+        for (EntidadeDocente entidadeDocente : entidadeDocenteList) {
+            docenteMap.put(entidadeDocente.getCpf(), entidadeDocente);
+            usuarioMap.put(entidadeDocente.getCpf(), entidadeDocente);
+        }
+    }
 
     public boolean contemCpf(String cpf) {
         return usuarioMap.containsKey(cpf);
@@ -26,12 +50,16 @@ public class RepositorioUsuarios {
         EntidadeAluno entidadeAluno = EntidadeAluno.converterParaEntidade(aluno);
         alunoMap.put(aluno.getCpf(), entidadeAluno);
         usuarioMap.put(aluno.getCpf(), entidadeAluno);
+
+        dataManager.salvar(ALUNOS_FILENAME, alunoMap.values());
     }
 
     public void salvar(Docente docente) {
         EntidadeDocente entidadeDocente = EntidadeDocente.converterParaEntidade(docente);
         docenteMap.put(docente.getCpf(), entidadeDocente);
         usuarioMap.put(docente.getCpf(), entidadeDocente);
+
+        dataManager.salvar(DOCENTES_FILENAME, docenteMap.values());
     }
 
     public void salvar(Usuario usuario) {

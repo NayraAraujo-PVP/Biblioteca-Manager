@@ -24,6 +24,10 @@ public class EntidadeEmprestimo {
         this.devolvido = devolvido;
     }
 
+    public int getId() {
+        return id;
+    }
+
     public String getCpfUsuario() {
         return cpfUsuario;
     }

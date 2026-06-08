@@ -1,7 +1,9 @@
+import datamanager.JsonFileDataManager;
 import domain.Docente;
 import domain.Livro;
 import domain.Usuario;
 import domain.enums.TitulacaoAcademica;
+import entities.EntidadeLivro;
 import repository.RepositorioEmprestimos;
 import repository.RepositorioLivros;
 import repository.RepositorioUsuarios;
@@ -9,9 +11,15 @@ import services.ServicoEmprestimos;
 import services.ServicoLivros;
 import services.ServicoUsuarios;
 
+import java.util.List;
+
 public class Test {
     public static void main(String[] args) {
-        RepositorioLivros repositorioLivros = new RepositorioLivros();
+        JsonFileDataManager x = new JsonFileDataManager();
+        List<EntidadeLivro> l = x.buscar("livros");
+        System.out.println(l.size());
+
+        /*RepositorioLivros repositorioLivros = new RepositorioLivros();
         ServicoLivros servicoLivros = new ServicoLivros(repositorioLivros);
         RepositorioUsuarios repositorioUsuarios = new RepositorioUsuarios();
         ServicoUsuarios servicoUsuarios = new ServicoUsuarios(repositorioUsuarios);
@@ -26,7 +34,7 @@ public class Test {
         System.out.println(repositorioUsuarios.buscarUsuario("123.456.789-12").getNome());
 
         servicoUsuarios.editarAluno("123.456.789-12", "Kira", "202610509");
-        System.out.println(repositorioUsuarios.buscarUsuario("123.456.789-12").getNome());
+        System.out.println(repositorioUsuarios.buscarUsuario("123.456.789-12").getNome());*/
 
 
     }

@@ -1,11 +1,13 @@
 package repository;
 
+import datamanager.DataManager;
 import domain.Emprestimo;
 import domain.Livro;
 import domain.Usuario;
 import entities.EntidadeEmprestimo;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class RepositorioEmprestimos {
@@ -14,15 +16,27 @@ public class RepositorioEmprestimos {
     private final RepositorioLivros repositorioLivros;
     private final RepositorioUsuarios repositorioUsuarios;
 
-    public RepositorioEmprestimos(RepositorioLivros repositorioLivros, RepositorioUsuarios repositorioUsuarios) {
+    private final DataManager dataManager;
+
+    private static final String EMPRESTIMOS_FILENAME = "emprestimos";
+
+    public RepositorioEmprestimos(RepositorioLivros repositorioLivros, RepositorioUsuarios repositorioUsuarios, DataManager dataManager) {
         this.repositorioLivros = repositorioLivros;
         this.repositorioUsuarios = repositorioUsuarios;
+        this.dataManager = dataManager;
+
+        List<EntidadeEmprestimo> entidadeEmprestimoList = dataManager.buscar(EMPRESTIMOS_FILENAME);
+        for (EntidadeEmprestimo entidadeEmprestimo : entidadeEmprestimoList) {
+            emprestimoMap.put(entidadeEmprestimo.getId(), entidadeEmprestimo);
+        }
     }
 
     public void salvar(Emprestimo emprestimo) {
         repositorioLivros.salvar(emprestimo.getLivro());
         repositorioUsuarios.salvar(emprestimo.getUsuario());
         emprestimoMap.put(emprestimo.getId(), EntidadeEmprestimo.converterParaEntidade(emprestimo));
+
+        dataManager.salvar(EMPRESTIMOS_FILENAME, emprestimoMap.values());
     }
 
     public boolean contemId(int id) {
