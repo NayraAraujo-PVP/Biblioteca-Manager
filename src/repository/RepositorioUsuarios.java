@@ -9,6 +9,7 @@ import entities.EntidadeDocente;
 import entities.EntidadeLivro;
 import entities.EntidadeUsuario;
 
+import javax.print.Doc;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,6 +32,11 @@ public class RepositorioUsuarios {
         EntidadeDocente entidadeDocente = EntidadeDocente.converterParaEntidade(docente);
         docenteMap.put(docente.getCpf(), entidadeDocente);
         usuarioMap.put(docente.getCpf(), entidadeDocente);
+    }
+
+    public void salvar(Usuario usuario) {
+        if(usuario instanceof Aluno aluno) salvar(aluno);
+        if(usuario instanceof Docente docente) salvar(docente);
     }
 
     public Aluno buscarAluno(String cpf) {

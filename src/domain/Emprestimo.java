@@ -19,6 +19,16 @@ public class Emprestimo {
         this.dataRetirada = dataRetirada;
     }
 
+    public Emprestimo(int id, Usuario usuario, Livro livro, Date dataRetirada, Date dataDevolucao, Double valorMulta, boolean devolvido) {
+        this.id = id;
+        this.usuario = usuario;
+        this.livro = livro;
+        this.dataRetirada = dataRetirada;
+        this.dataDevolucao = dataDevolucao;
+        this.valorMulta = valorMulta;
+        this.devolvido = devolvido;
+    }
+
     public int getId() {
         return id;
     }

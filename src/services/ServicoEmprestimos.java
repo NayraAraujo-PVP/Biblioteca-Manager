@@ -37,5 +37,7 @@ public class ServicoEmprestimos {
 
         emprestimo.getUsuario().removeEmprestimo();
         emprestimo.getLivro().retirarUmEmprestado();
+
+        repositorioEmprestimos.salvar(emprestimo);
     }
 }
