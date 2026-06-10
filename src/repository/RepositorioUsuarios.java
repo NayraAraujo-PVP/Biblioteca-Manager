@@ -3,14 +3,11 @@ package repository;
 import datamanager.DataManager;
 import domain.Aluno;
 import domain.Docente;
-import domain.Livro;
 import domain.Usuario;
 import entities.EntidadeAluno;
 import entities.EntidadeDocente;
-import entities.EntidadeLivro;
 import entities.EntidadeUsuario;
 
-import javax.print.Doc;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,8 +25,8 @@ public class RepositorioUsuarios {
     public RepositorioUsuarios(DataManager dataManager) {
         this.dataManager = dataManager;
 
-        List<EntidadeAluno> entidadeAlunoList = dataManager.buscar(ALUNOS_FILENAME);
-        List<EntidadeDocente> entidadeDocenteList = dataManager.buscar(DOCENTES_FILENAME);
+        List<EntidadeAluno> entidadeAlunoList = dataManager.buscar(ALUNOS_FILENAME, EntidadeAluno.class);
+        List<EntidadeDocente> entidadeDocenteList = dataManager.buscar(DOCENTES_FILENAME, EntidadeDocente.class);
 
         for (EntidadeAluno entidadeAluno : entidadeAlunoList) {
             alunoMap.put(entidadeAluno.getCpf(), entidadeAluno);

@@ -3,12 +3,14 @@ package entities;
 import domain.Livro;
 
 public class EntidadeLivro {
-    private final int id;
-    private final String titulo;
-    private final String autor;
-    private final String categoria;
-    private final int quantidadeTotal;
-    private final int quantidadeEmprestada;
+    private int id;
+    private String titulo;
+    private String autor;
+    private String categoria;
+    private int quantidadeTotal;
+    private int quantidadeEmprestada;
+
+    public EntidadeLivro() {}
 
     private EntidadeLivro(int id, String titulo, String autor, String categoria, int quantidadeTotal, int quantidadeEmprestada) {
         this.id = id;
@@ -21,6 +23,26 @@ public class EntidadeLivro {
 
     public int getId() {
         return id;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public int getQuantidadeTotal() {
+        return quantidadeTotal;
+    }
+
+    public int getQuantidadeEmprestada() {
+        return quantidadeEmprestada;
     }
 
     public Livro converterParaLivro() {

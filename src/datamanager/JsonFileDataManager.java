@@ -1,6 +1,6 @@
 package datamanager;
 
-import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
@@ -11,11 +11,12 @@ public class JsonFileDataManager implements DataManager {
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     @Override
-    public <T> List<T> buscar(String fileName) {
+    public <T> List<T> buscar(String fileName, Class<T> tClass) {
         File arquivoJson = new File("data/" + fileName + ".json");
 
         try {
-            return objectMapper.readValue(arquivoJson, new TypeReference<>() {});
+            JavaType javaType = objectMapper.getTypeFactory().constructCollectionType(List.class, tClass);
+            return objectMapper.readValue(arquivoJson, javaType);
         } catch (Exception e) {
             return List.of();
         }

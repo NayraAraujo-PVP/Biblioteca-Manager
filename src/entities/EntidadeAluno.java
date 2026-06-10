@@ -4,11 +4,17 @@ import domain.Aluno;
 import domain.Usuario;
 
 public class EntidadeAluno extends EntidadeUsuario {
-    private final String matricula;
+    private String matricula;
+
+    public EntidadeAluno() {}
 
     protected EntidadeAluno(String nome, String cpf, int emprestimosAtivos, String matricula) {
         super(nome, cpf, emprestimosAtivos);
         this.matricula = matricula;
+    }
+
+    public String getMatricula() {
+        return matricula;
     }
 
     public Aluno converterParaAluno() {

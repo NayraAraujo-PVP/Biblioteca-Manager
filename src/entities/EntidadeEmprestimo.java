@@ -6,13 +6,15 @@ import domain.Usuario;
 import utils.DateUtils;
 
 public class EntidadeEmprestimo {
-    private final int id;
-    private final String cpfUsuario;
-    private final int idLivro;
-    private final String dataRetirada;
-    private final String dataDevolucao;
-    private final Double valorMulta;
-    private final boolean devolvido;
+    private int id;
+    private String cpfUsuario;
+    private int idLivro;
+    private String dataRetirada;
+    private String dataDevolucao;
+    private Double valorMulta;
+    private boolean devolvido;
+
+    public EntidadeEmprestimo() {}
 
     private EntidadeEmprestimo(int id, String cpfUsuario, int idLivro, String dataRetirada, String dataDevolucao, Double valorMulta, boolean devolvido) {
         this.id = id;
@@ -34,6 +36,22 @@ public class EntidadeEmprestimo {
 
     public int getIdLivro() {
         return idLivro;
+    }
+
+    public String getDataRetirada() {
+        return dataRetirada;
+    }
+
+    public String getDataDevolucao() {
+        return dataDevolucao;
+    }
+
+    public Double getValorMulta() {
+        return valorMulta;
+    }
+
+    public boolean isDevolvido() {
+        return devolvido;
     }
 
     public Emprestimo converterParaEmprestimo(Usuario usuario, Livro livro) {

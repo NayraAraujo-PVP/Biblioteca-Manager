@@ -5,13 +5,23 @@ import domain.Usuario;
 import domain.enums.TitulacaoAcademica;
 
 public class EntidadeDocente extends EntidadeUsuario {
-    private final String departamento;
-    private final TitulacaoAcademica titulacaoAcademica;
+    private String departamento;
+    private TitulacaoAcademica titulacaoAcademica;
+
+    public EntidadeDocente() {}
 
     protected EntidadeDocente(String nome, String cpf, int emprestimosAtivos, String departamento, TitulacaoAcademica titulacaoAcademica) {
         super(nome, cpf, emprestimosAtivos);
         this.departamento = departamento;
         this.titulacaoAcademica = titulacaoAcademica;
+    }
+
+    public String getDepartamento() {
+        return departamento;
+    }
+
+    public TitulacaoAcademica getTitulacaoAcademica() {
+        return titulacaoAcademica;
     }
 
     public Docente converterParaDocente() {

@@ -18,7 +18,7 @@ public class RepositorioLivros {
     public RepositorioLivros(DataManager dataManager) {
         this.dataManager = dataManager;
 
-        List<EntidadeLivro> entidadeLivroList = dataManager.buscar(LIVROS_FILENAME);
+        List<EntidadeLivro> entidadeLivroList = dataManager.buscar(LIVROS_FILENAME, EntidadeLivro.class);
         for (EntidadeLivro entidadeLivro : entidadeLivroList) {
             livroMap.put(entidadeLivro.getId(), entidadeLivro);
         }
@@ -39,6 +39,6 @@ public class RepositorioLivros {
     }
 
     public int getProximoId() {
-        return livroMap.keySet().stream().mapToInt(o -> o).max().orElse(0);
+        return livroMap.keySet().stream().mapToInt(o -> o).max().orElse(0) + 1;
     }
 }

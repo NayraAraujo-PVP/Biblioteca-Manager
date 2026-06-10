@@ -25,7 +25,7 @@ public class RepositorioEmprestimos {
         this.repositorioUsuarios = repositorioUsuarios;
         this.dataManager = dataManager;
 
-        List<EntidadeEmprestimo> entidadeEmprestimoList = dataManager.buscar(EMPRESTIMOS_FILENAME);
+        List<EntidadeEmprestimo> entidadeEmprestimoList = dataManager.buscar(EMPRESTIMOS_FILENAME, EntidadeEmprestimo.class);
         for (EntidadeEmprestimo entidadeEmprestimo : entidadeEmprestimoList) {
             emprestimoMap.put(entidadeEmprestimo.getId(), entidadeEmprestimo);
         }
@@ -53,6 +53,6 @@ public class RepositorioEmprestimos {
     }
 
     public int getProximoId() {
-        return emprestimoMap.keySet().stream().mapToInt(o -> o).max().orElse(0);
+        return emprestimoMap.keySet().stream().mapToInt(o -> o).max().orElse(0) + 1;
     }
 }
