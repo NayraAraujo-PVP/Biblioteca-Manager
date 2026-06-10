@@ -1,7 +1,4 @@
-package ui;
-
-import ui.screen.Tela;
-import ui.screen.TelaEnum;
+package ui.screen;
 
 import java.util.HashMap;
 import java.util.Map;

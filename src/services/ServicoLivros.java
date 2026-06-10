@@ -3,11 +3,17 @@ package services;
 import domain.Livro;
 import repository.RepositorioLivros;
 
+import java.util.List;
+
 public class ServicoLivros {
     private final RepositorioLivros repositorioLivros;
 
     public ServicoLivros(RepositorioLivros repositorioLivros) {
         this.repositorioLivros = repositorioLivros;
+    }
+
+    public List<Livro> buscar(String termoPesquisa) {
+        return repositorioLivros.buscar(termoPesquisa);
     }
 
     public void cadastrarLivro(String titulo, String autor, String categoria, int quantidadeTotal) {

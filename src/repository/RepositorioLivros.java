@@ -38,6 +38,15 @@ public class RepositorioLivros {
         return livroMap.get(id).converterParaLivro();
     }
 
+    public List<Livro> buscar(String termoPesquisa) {
+        return livroMap.values().stream()
+                .filter(entidadeLivro -> entidadeLivro.getTitulo().toLowerCase().contains(termoPesquisa.toLowerCase())
+                    || entidadeLivro.getAutor().toLowerCase().contains(termoPesquisa.toLowerCase())
+                    || entidadeLivro.getCategoria().toLowerCase().contains(termoPesquisa.toLowerCase()))
+                .map(EntidadeLivro::converterParaLivro)
+                .toList();
+    }
+
     public int getProximoId() {
         return livroMap.keySet().stream().mapToInt(o -> o).max().orElse(0) + 1;
     }

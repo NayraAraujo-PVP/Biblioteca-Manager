@@ -1,11 +1,15 @@
-package ui.screen.components;
+package ui.components;
 
 import java.util.Scanner;
 
 public class ComponenteInputNumero {
+    private final Scanner input;
+
+    public ComponenteInputNumero(Scanner input) {
+        this.input = input;
+    }
 
     public int receberNumero() {
-        Scanner input = new Scanner(System.in);
         String valorString = input.next();
         Integer valor = null;
 

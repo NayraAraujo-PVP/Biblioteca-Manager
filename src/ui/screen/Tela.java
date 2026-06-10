@@ -1,12 +1,14 @@
 package ui.screen;
 
-import ui.TelaManager;
+import java.util.Scanner;
 
 public abstract class Tela {
     private final TelaManager telaManager;
+    protected final Scanner input;
 
-    protected Tela(TelaManager telaManager) {
+    protected Tela(TelaManager telaManager, Scanner input) {
         this.telaManager = telaManager;
+        this.input = input;
     }
 
     protected void trocarTela(TelaEnum telaEnum) {
@@ -14,11 +16,8 @@ public abstract class Tela {
     }
 
     public void abrir() {
-        limpar();
         executar();
     }
-
-    protected abstract void limpar();
 
     protected abstract void executar();
 }

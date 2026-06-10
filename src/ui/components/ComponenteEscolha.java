@@ -1,10 +1,15 @@
-package ui.screen.components;
+package ui.components;
 
 import java.util.*;
 
 public class ComponenteEscolha {
+    private final Scanner input;
     private final List<String> opcoes = new ArrayList<>();
     private final Map<String, Runnable> funcoes = new HashMap<>();
+
+    public ComponenteEscolha(Scanner input) {
+        this.input = input;
+    }
 
     public void registrarOpcao(String opcao, Runnable funcao) {
         if(funcoes.containsKey(opcao)) {
@@ -24,7 +29,6 @@ public class ComponenteEscolha {
         }
         System.out.println();
 
-        Scanner input = new Scanner(System.in);
         String escolha = input.next();
         System.out.println();
 

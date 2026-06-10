@@ -1,25 +1,22 @@
 package ui.screen.impl;
 
-import ui.TelaManager;
+import ui.screen.TelaManager;
 import ui.screen.Tela;
 import ui.screen.TelaEnum;
-import ui.screen.components.ComponenteEscolha;
+import ui.components.ComponenteEscolha;
+
+import java.util.Scanner;
 
 public class TelaMenuPrincipal extends Tela {
-    public TelaMenuPrincipal(TelaManager telaManager) {
-        super(telaManager);
-    }
-
-    @Override
-    protected void limpar() {
-
+    public TelaMenuPrincipal(TelaManager telaManager, Scanner input) {
+        super(telaManager, input);
     }
 
     @Override
     protected void executar() {
         System.out.println("MENU PRINCIPAL");
 
-        ComponenteEscolha componenteEscolha = new ComponenteEscolha();
+        ComponenteEscolha componenteEscolha = new ComponenteEscolha(input);
 
         componenteEscolha.registrarOpcao("Registrar empréstimo", this::registrarEmprestimo);
         componenteEscolha.registrarOpcao("Registrar devolução", this::registrarDevolucao);
@@ -39,7 +36,7 @@ public class TelaMenuPrincipal extends Tela {
     private void acervo() {
         System.out.println("ACERVO");
 
-        ComponenteEscolha componenteEscolha = new ComponenteEscolha();
+        ComponenteEscolha componenteEscolha = new ComponenteEscolha(input);
 
         componenteEscolha.registrarOpcao("Cadastrar livro", this::cadastrarLivro);
         componenteEscolha.registrarOpcao("Pesquisar livro", this::pesquisarLivro);
