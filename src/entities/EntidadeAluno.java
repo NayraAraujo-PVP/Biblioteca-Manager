@@ -74,3 +74,5 @@ public class EntidadeAluno extends EntidadeUsuario {
         );
     }
 }
+}
+
