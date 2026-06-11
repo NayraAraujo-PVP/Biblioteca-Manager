@@ -6,13 +6,6 @@ package domain;
  * A classe herda as características básicas de um usuário
  * e adiciona a matrícula do aluno. Também implementa as
  * regras específicas de empréstimo, atraso e multa para alunos.
- *
- * Exemplo de uso:
- * <pre>
- * Aluno aluno = new Aluno("12345678900", "João Silva", "2023001");
- *
- * boolean podeEmprestar = aluno.verificaLimiteEmprestimos();
- * </pre>
  */
 public class Aluno extends Usuario {
 
