@@ -21,8 +21,7 @@ public class TelaMenuPrincipal extends Tela {
         componenteEscolha.registrarOpcao("Registrar devolução", this::registrarDevolucao);
         componenteEscolha.registrarOpcao("Acervo", this::acervo);
         componenteEscolha.registrarOpcao("Usuários", this::usuarios);
-        componenteEscolha.registrarOpcao("Consultas", this::consultas);
-        componenteEscolha.registrarOpcao("Sair", () -> System.exit(0));
+        componenteEscolha.registrarOpcao("Histórico", this::historico);
 
         componenteEscolha.mostrarOpcoes();
     }
@@ -95,6 +94,7 @@ public class TelaMenuPrincipal extends Tela {
 
     private void consultarDevolvidos() {
         trocarTela(TelaEnum.CONSULTA_DEVOLVIDOS);
+    private void historico() {
     }
 
     private void consultarPorLivros() {
