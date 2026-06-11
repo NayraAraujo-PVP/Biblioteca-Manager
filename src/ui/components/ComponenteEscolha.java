@@ -2,6 +2,8 @@ package ui.components;
 
 import java.util.*;
 
+import static ui.UIUtils.quebraLinha;
+
 public class ComponenteEscolha {
     private final Scanner input;
     private final List<String> opcoes = new ArrayList<>();
@@ -22,15 +24,15 @@ public class ComponenteEscolha {
     }
 
     public void mostrarOpcoes() {
-        System.out.println();
+        quebraLinha();
         for(int i = 0; i < opcoes.size(); i++) {
             String opcao = opcoes.get(i);
             System.out.printf("%d. %s %n", i + 1, opcao);
         }
-        System.out.println();
+        quebraLinha();
 
-        String escolha = input.next();
-        System.out.println();
+        String escolha = input.nextLine();
+        quebraLinha();
 
         if(funcoes.containsKey(escolha)) {
             funcoes.get(escolha).run();

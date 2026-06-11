@@ -8,6 +8,8 @@ import ui.components.ComponenteInputNumero;
 
 import java.util.Scanner;
 
+import static ui.UIUtils.quebraLinha;
+
 public class TelaCadastrarLivro extends Tela {
     private final ServicoLivros servicoLivros;
 
@@ -19,16 +21,16 @@ public class TelaCadastrarLivro extends Tela {
     @Override
     protected void executar() {
         System.out.println("CADASTRAR LIVRO");
-        System.out.println();
+        quebraLinha();
 
         System.out.print("Título: ");
-        String titulo = input.next();
+        String titulo = input.nextLine();
 
         System.out.print("Autor: ");
-        String autor = input.next();
+        String autor = input.nextLine();
 
         System.out.print("Categoria: ");
-        String categoria = input.next();
+        String categoria = input.nextLine();
 
         System.out.print("Quantidade total: ");
         ComponenteInputNumero componenteInputNumero = new ComponenteInputNumero(input);
@@ -36,9 +38,9 @@ public class TelaCadastrarLivro extends Tela {
 
         servicoLivros.cadastrarLivro(titulo, autor, categoria, quantidadeTotal);
 
-        System.out.println();
+        quebraLinha();
         System.out.println("Livro cadastrado com sucesso!");
-        System.out.println();
+        quebraLinha();
 
         trocarTela(TelaEnum.MENU_PRINCIPAL);
     }

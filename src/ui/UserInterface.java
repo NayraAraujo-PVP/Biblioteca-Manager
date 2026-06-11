@@ -25,9 +25,13 @@ public class UserInterface {
 
         TelaPesquisarLivro telaPesquisarLivro = new TelaPesquisarLivro(telaManager, input, servicoLivros);
         telaManager.registrarTela(TelaEnum.PESQUISAR_LIVRO, telaPesquisarLivro);
+
+        telaManager.trocarTela(TelaEnum.MENU_PRINCIPAL);
     }
 
     public void start() {
-        telaManager.trocarTela(TelaEnum.MENU_PRINCIPAL);
+        while (true) {
+            telaManager.abrirTelaAtual();
+        }
     }
 }

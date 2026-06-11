@@ -6,6 +6,8 @@ import java.util.Map;
 public class TelaManager {
     private final Map<TelaEnum, Tela> telaMap = new HashMap<>();
 
+    private Tela telaAtual = null;
+
     public void registrarTela(TelaEnum telaEnum, Tela tela) {
         telaMap.put(telaEnum, tela);
     }
@@ -16,7 +18,10 @@ public class TelaManager {
             return;
         }
 
-        Tela tela = telaMap.get(telaEnum);
-        tela.abrir();
+        telaAtual = telaMap.get(telaEnum);
+    }
+
+    public void abrirTelaAtual() {
+        telaAtual.abrir();
     }
 }

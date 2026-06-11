@@ -40,6 +40,7 @@ public class RepositorioLivros {
 
     public List<Livro> buscar(String termoPesquisa) {
         return livroMap.values().stream()
+                .filter(entidadeLivro -> entidadeLivro.getQuantidadeTotal() > 0)
                 .filter(entidadeLivro -> entidadeLivro.getTitulo().toLowerCase().contains(termoPesquisa.toLowerCase())
                     || entidadeLivro.getAutor().toLowerCase().contains(termoPesquisa.toLowerCase())
                     || entidadeLivro.getCategoria().toLowerCase().contains(termoPesquisa.toLowerCase()))

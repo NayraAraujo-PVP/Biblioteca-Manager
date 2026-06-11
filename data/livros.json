@@ -1,8 +1,8 @@
 [ {
   "id" : 1,
-  "titulo" : "a",
+  "titulo" : "O Senhor dos Anéis",
   "autor" : "b",
-  "categoria" : "c",
+  "categoria" : "Ficção",
   "quantidadeTotal" : 5,
   "quantidadeEmprestada" : 0
 }, {
@@ -10,14 +10,14 @@
   "titulo" : "d",
   "autor" : "e",
   "categoria" : "f",
-  "quantidadeTotal" : 10,
+  "quantidadeTotal" : 0,
   "quantidadeEmprestada" : 0
 }, {
   "id" : 3,
   "titulo" : "x",
   "autor" : "y",
   "categoria" : "z",
-  "quantidadeTotal" : 15,
+  "quantidadeTotal" : 0,
   "quantidadeEmprestada" : 0
 }, {
   "id" : 4,
