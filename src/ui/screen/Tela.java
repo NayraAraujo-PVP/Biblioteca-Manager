@@ -15,6 +15,10 @@ public abstract class Tela {
         telaManager.trocarTela(telaEnum);
     }
 
+    protected void voltarMenu() {
+        trocarTela(TelaEnum.MENU_PRINCIPAL);
+    }
+
     public void abrir() {
         executar();
     }

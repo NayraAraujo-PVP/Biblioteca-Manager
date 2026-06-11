@@ -42,6 +42,6 @@ public class TelaCadastrarLivro extends Tela {
         System.out.println("Livro cadastrado com sucesso!");
         quebraLinha();
 
-        trocarTela(TelaEnum.MENU_PRINCIPAL);
+        voltarMenu();
     }
 }

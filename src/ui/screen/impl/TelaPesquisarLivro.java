@@ -6,7 +6,6 @@ import java.util.Optional;
 import java.util.Scanner;
 import services.ServicoLivros;
 import static ui.UIUtils.quebraLinha;
-
 import ui.components.ComponenteEscolha;
 import ui.components.ComponenteInputNumero;
 import ui.components.ComponenteVisualizacaoBlocos;
@@ -30,11 +29,21 @@ public class TelaPesquisarLivro extends Tela {
     }
 
     private void iniciarPesquisa() {
-        System.out.print("Insira seu termo de pesquisa (titulo, autor ou categoria): ");
+        System.out.print("Insira seu termo de pesquisa (titulo, autor ou categoria) ou 'voltar' para retornar ao menu: ");
 
         String termoPesquisa = input.nextLine();
+        if (termoPesquisa.toLowerCase().equals("voltar")) {
+            voltarMenu();
+            return;
+        }
 
         List<Livro> livros = servicoLivros.buscar(termoPesquisa);
+
+        if (livros.isEmpty()) {
+            System.out.println("Nenhum livro encontrado!");
+            quebraLinha();
+            iniciarPesquisa();
+        }
 
         ComponenteVisualizacaoBlocos componenteVisualizacaoBlocos = new ComponenteVisualizacaoBlocos(
                 List.of(
@@ -82,15 +91,19 @@ public class TelaPesquisarLivro extends Tela {
         }
 
         Livro livroSelecionado = livroSelecionadoOpt.get();
+        apresentarOpcoesLivro(livroSelecionado);
+    }
+
+    private void apresentarOpcoesLivro(Livro livroSelecionado) {
         quebraLinha();
         System.out.printf("O livro '%s' foi selecionado %n", livroSelecionado.getTitulo());
-        quebraLinha();
 
         ComponenteEscolha componenteEscolha = new ComponenteEscolha(input);
 
         componenteEscolha.registrarOpcao("Editar livro", () -> editarLivro(livroSelecionado));
         componenteEscolha.registrarOpcao("Alterar quantidade", () -> alterarQuantidadeLivro(livroSelecionado));
         componenteEscolha.registrarOpcao("Remover livro", () -> removerLivro(livroSelecionado));
+        componenteEscolha.registrarOpcao("Voltar", this::voltarMenu);
 
         componenteEscolha.mostrarOpcoes();
     }
@@ -111,6 +124,7 @@ public class TelaPesquisarLivro extends Tela {
         quebraLinha();
 
         servicoLivros.editarLivro(livroSelecionado.getId(), novoTitulo, novoAutor, novaCategoria);
+        voltarMenu();
     }
 
     private void alterarQuantidadeLivro(Livro livroSelecionado) {
@@ -123,10 +137,12 @@ public class TelaPesquisarLivro extends Tela {
             System.out.println("Impossível a alteração");
             System.out.println("Motivo: há mais unidades emprestadas do que a quantidade inserida.");
 
+            apresentarOpcoesLivro(livroSelecionado);
             return;
         }
 
         servicoLivros.alteraQuantidadeTotal(livroSelecionado.getId(), novaQuantidade);
+        voltarMenu();
     }
 
     private void removerLivro(Livro livroSelecionado) {
@@ -134,9 +150,11 @@ public class TelaPesquisarLivro extends Tela {
             System.out.println("Impossível a remoção");
             System.out.println("Motivo: há unidades emprestadas.");
 
+            apresentarOpcoesLivro(livroSelecionado);
             return;
         }
 
         servicoLivros.alteraQuantidadeTotal(livroSelecionado.getId(), 0);
+        voltarMenu();
     }
 }

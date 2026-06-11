@@ -1,11 +1,10 @@
 package ui.screen.impl;
 
-import ui.screen.TelaManager;
+import java.util.Scanner;
+import ui.components.ComponenteEscolha;
 import ui.screen.Tela;
 import ui.screen.TelaEnum;
-import ui.components.ComponenteEscolha;
-
-import java.util.Scanner;
+import ui.screen.TelaManager;
 
 public class TelaMenuPrincipal extends Tela {
     public TelaMenuPrincipal(TelaManager telaManager, Scanner input) {
@@ -40,6 +39,7 @@ public class TelaMenuPrincipal extends Tela {
 
         componenteEscolha.registrarOpcao("Cadastrar livro", this::cadastrarLivro);
         componenteEscolha.registrarOpcao("Pesquisar livro", this::pesquisarLivro);
+        componenteEscolha.registrarOpcao("Voltar", this::voltarMenu);
 
         componenteEscolha.mostrarOpcoes();
     }

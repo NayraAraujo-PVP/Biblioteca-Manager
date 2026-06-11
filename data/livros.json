@@ -4,7 +4,7 @@
   "autor" : "b",
   "categoria" : "Ficção",
   "quantidadeTotal" : 5,
-  "quantidadeEmprestada" : 0
+  "quantidadeEmprestada" : 1
 }, {
   "id" : 2,
   "titulo" : "d",
@@ -73,6 +73,13 @@
   "titulo" : "a",
   "autor" : "b",
   "categoria" : "c",
-  "quantidadeTotal" : 3,
+  "quantidadeTotal" : 0,
+  "quantidadeEmprestada" : 0
+}, {
+  "id" : 12,
+  "titulo" : "a",
+  "autor" : "b",
+  "categoria" : "c",
+  "quantidadeTotal" : 0,
   "quantidadeEmprestada" : 0
 } ]
