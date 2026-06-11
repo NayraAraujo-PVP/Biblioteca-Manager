@@ -10,14 +10,31 @@ import java.util.Scanner;
 
 import static ui.UIUtils.quebraLinha;
 
+/**
+ * Tela responsável pelo cadastro de usuários da biblioteca.
+ * Permite cadastrar alunos e docentes.
+ */
 public class TelaCadastrarUsuario extends Tela {
+
     private final ServicoUsuarios servicoUsuarios;
 
-    public TelaCadastrarUsuario(TelaManager telaManager, Scanner input, ServicoUsuarios servicoUsuarios) {
+    /**
+     * Cria a tela de cadastro de usuários.
+     *
+     * @param telaManager gerenciador de telas.
+     * @param input scanner utilizado para entrada de dados.
+     * @param servicoUsuarios serviço responsável pelas operações com usuários.
+     */
+    public TelaCadastrarUsuario(TelaManager telaManager,
+                                Scanner input,
+                                ServicoUsuarios servicoUsuarios) {
         super(telaManager, input);
         this.servicoUsuarios = servicoUsuarios;
     }
 
+    /**
+     * Exibe as opções de cadastro de usuário.
+     */
     @Override
     protected void executar() {
         System.out.println("Selecione o tipo de usuário:");
@@ -30,12 +47,16 @@ public class TelaCadastrarUsuario extends Tela {
         componenteEscolha.mostrarOpcoes();
     }
 
+    /**
+     * Realiza o cadastro de um aluno.
+     */
     private void cadastrarAluno() {
         System.out.println("CADASTRAR ALUNO");
         quebraLinha();
 
         String cpf = receberCpf();
-        if(cpf.trim().isEmpty()) {
+
+        if (cpf.trim().isEmpty()) {
             voltarMenu();
             return;
         }
@@ -55,12 +76,16 @@ public class TelaCadastrarUsuario extends Tela {
         voltarMenu();
     }
 
+    /**
+     * Realiza o cadastro de um docente.
+     */
     private void cadastrarDocente() {
         System.out.println("CADASTRAR DOCENTE");
         quebraLinha();
 
         String cpf = receberCpf();
-        if(cpf.trim().isEmpty()) {
+
+        if (cpf.trim().isEmpty()) {
             voltarMenu();
             return;
         }
@@ -72,17 +97,43 @@ public class TelaCadastrarUsuario extends Tela {
         String departamento = input.nextLine();
 
         System.out.println("Selecione a titulação acadêmica:");
+
         ComponenteEscolha componenteEscolha = new ComponenteEscolha(input);
 
         for (TitulacaoAcademica titulacaoAcademica : TitulacaoAcademica.values()) {
-            componenteEscolha.registrarOpcao(titulacaoAcademica.name(), () -> finalizarCadastroDocente(cpf, nome, departamento, titulacaoAcademica));
+            componenteEscolha.registrarOpcao(
+                    titulacaoAcademica.name(),
+                    () -> finalizarCadastroDocente(
+                            cpf,
+                            nome,
+                            departamento,
+                            titulacaoAcademica
+                    )
+            );
         }
 
         componenteEscolha.mostrarOpcoes();
     }
 
-    private void finalizarCadastroDocente(String cpf, String nome, String departamento, TitulacaoAcademica titulacaoAcademica){
-        servicoUsuarios.cadastrarDocente(cpf, nome, departamento, titulacaoAcademica);
+    /**
+     * Finaliza o cadastro de um docente.
+     *
+     * @param cpf CPF do docente.
+     * @param nome nome do docente.
+     * @param departamento departamento do docente.
+     * @param titulacaoAcademica titulação acadêmica do docente.
+     */
+    private void finalizarCadastroDocente(String cpf,
+                                          String nome,
+                                          String departamento,
+                                          TitulacaoAcademica titulacaoAcademica) {
+
+        servicoUsuarios.cadastrarDocente(
+                cpf,
+                nome,
+                departamento,
+                titulacaoAcademica
+        );
 
         quebraLinha();
         System.out.println("Docente cadastrado com sucesso!");
@@ -91,11 +142,16 @@ public class TelaCadastrarUsuario extends Tela {
         voltarMenu();
     }
 
+    /**
+     * Solicita e valida o CPF informado pelo usuário.
+     *
+     * @return CPF informado ou uma string vazia caso já exista cadastro.
+     */
     private String receberCpf() {
         System.out.print("CPF: ");
         String cpf = input.nextLine();
 
-        if(servicoUsuarios.contemCpf(cpf)) {
+        if (servicoUsuarios.contemCpf(cpf)) {
             System.out.println("Esse CPF já está cadastrado");
             quebraLinha();
             return "";
