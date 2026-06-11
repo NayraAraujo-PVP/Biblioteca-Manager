@@ -3,7 +3,6 @@ package ui.screen.impl;
 import services.ServicoLivros;
 import ui.screen.TelaManager;
 import ui.screen.Tela;
-import ui.screen.TelaEnum;
 import ui.components.ComponenteInputNumero;
 
 import java.util.Scanner;

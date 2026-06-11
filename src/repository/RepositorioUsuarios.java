@@ -43,6 +43,25 @@ public class RepositorioUsuarios {
         return usuarioMap.containsKey(cpf);
     }
 
+    public List<Aluno> buscarAlunos(String termoPesquisa) {
+        return alunoMap.values().stream()
+                .filter(entidadeAluno -> entidadeAluno.getCpf().toLowerCase().contains(termoPesquisa.toLowerCase())
+                        || entidadeAluno.getNome().toLowerCase().contains(termoPesquisa.toLowerCase())
+                        || entidadeAluno.getMatricula().toLowerCase().contains(termoPesquisa.toLowerCase()))
+                .map(EntidadeAluno::converterParaAluno)
+                .toList();
+    }
+
+    public List<Docente> buscarDocentes(String termoPesquisa) {
+        return docenteMap.values().stream()
+                .filter(entidadeDocente -> entidadeDocente.getCpf().toLowerCase().contains(termoPesquisa.toLowerCase())
+                        || entidadeDocente.getNome().toLowerCase().contains(termoPesquisa.toLowerCase())
+                        || entidadeDocente.getDepartamento().toLowerCase().contains(termoPesquisa.toLowerCase())
+                        || entidadeDocente.getTitulacaoAcademica().name().toLowerCase().contains(termoPesquisa.toLowerCase()))
+                .map(EntidadeDocente::converterParaDocente)
+                .toList();
+    }
+
     public void salvar(Aluno aluno) {
         EntidadeAluno entidadeAluno = EntidadeAluno.converterParaEntidade(aluno);
         alunoMap.put(aluno.getCpf(), entidadeAluno);

@@ -5,9 +5,7 @@ import services.ServicoLivros;
 import services.ServicoUsuarios;
 import ui.screen.TelaEnum;
 import ui.screen.TelaManager;
-import ui.screen.impl.TelaCadastrarLivro;
-import ui.screen.impl.TelaMenuPrincipal;
-import ui.screen.impl.TelaPesquisarLivro;
+import ui.screen.impl.*;
 
 import java.util.Scanner;
 
@@ -25,6 +23,12 @@ public class UserInterface {
 
         TelaPesquisarLivro telaPesquisarLivro = new TelaPesquisarLivro(telaManager, input, servicoLivros);
         telaManager.registrarTela(TelaEnum.PESQUISAR_LIVRO, telaPesquisarLivro);
+
+        TelaCadastrarUsuario telaCadastrarUsuario = new TelaCadastrarUsuario(telaManager, input, servicoUsuarios);
+        telaManager.registrarTela(TelaEnum.CADASTRAR_USUARIO, telaCadastrarUsuario);
+
+        TelaPesquisarUsuario telaPesquisarUsuario = new TelaPesquisarUsuario(telaManager, input, servicoUsuarios);
+        telaManager.registrarTela(TelaEnum.PESQUISAR_USUARIO, telaPesquisarUsuario);
 
         telaManager.trocarTela(TelaEnum.MENU_PRINCIPAL);
     }

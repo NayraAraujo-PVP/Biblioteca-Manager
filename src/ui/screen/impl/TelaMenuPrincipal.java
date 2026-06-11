@@ -53,6 +53,23 @@ public class TelaMenuPrincipal extends Tela {
     }
 
     private void usuarios() {
+        System.out.println("USUÁRIOS");
+
+        ComponenteEscolha componenteEscolha = new ComponenteEscolha(input);
+
+        componenteEscolha.registrarOpcao("Cadastrar usuário", this::cadastrarUsuario);
+        componenteEscolha.registrarOpcao("Pesquisar usuário", this::pesquisarUsuario);
+        componenteEscolha.registrarOpcao("Voltar", this::voltarMenu);
+
+        componenteEscolha.mostrarOpcoes();
+    }
+
+    private void cadastrarUsuario() {
+        trocarTela(TelaEnum.CADASTRAR_USUARIO);
+    }
+
+    private void pesquisarUsuario() {
+        trocarTela(TelaEnum.PESQUISAR_USUARIO);
     }
 
     private void historico() {

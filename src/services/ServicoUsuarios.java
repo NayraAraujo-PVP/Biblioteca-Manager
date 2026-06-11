@@ -2,8 +2,8 @@ package services;
 
 import domain.Aluno;
 import domain.Docente;
-import domain.Livro;
 import domain.enums.TitulacaoAcademica;
+import java.util.List;
 import repository.RepositorioUsuarios;
 
 public class ServicoUsuarios {
@@ -13,13 +13,29 @@ public class ServicoUsuarios {
         this.repositorioUsuarios = repositorioUsuarios;
     }
 
+    public boolean contemCpf(String cpf) {
+        return repositorioUsuarios.contemCpf(cpf);
+    }
+
+    public List<Aluno> buscarAlunos(String termoPesquisa) {
+        return repositorioUsuarios.buscarAlunos(termoPesquisa);
+    }
+
+    public List<Docente> buscarDocentes(String termoPesquisa) {
+        return repositorioUsuarios.buscarDocentes(termoPesquisa);
+    }
+
     public void cadastrarAluno(String cpf, String nome, String matricula) {
+        if(contemCpf(cpf)) return;
+
         Aluno aluno = new Aluno(cpf, nome, matricula);
 
         repositorioUsuarios.salvar(aluno);
     }
 
     public void cadastrarDocente(String cpf, String nome, String departamento, TitulacaoAcademica titulacaoAcademica) {
+        if(contemCpf(cpf)) return;
+
         Docente docente = new Docente(cpf, nome, departamento, titulacaoAcademica);
 
         repositorioUsuarios.salvar(docente);
