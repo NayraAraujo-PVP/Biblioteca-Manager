@@ -5,6 +5,7 @@ import domain.Livro;
 import domain.Usuario;
 import repository.RepositorioEmprestimos;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -18,6 +19,14 @@ public class ServicoEmprestimos {
 
     public List<Emprestimo> buscarEmprestimosPara(Usuario usuario) {
         return repositorioEmprestimos.buscarEmprestimosPara(usuario);
+    }
+
+    public List<Emprestimo> buscarPorDataRetirada(LocalDate localDate) {
+        return repositorioEmprestimos.buscarPorDataRetirada(localDate);
+    }
+
+    public List<Emprestimo> buscarDataDevolucao(LocalDate localDate) {
+        return repositorioEmprestimos.buscarDataDevolucao(localDate);
     }
 
     public Optional<Emprestimo> realizarEmprestimo(Usuario usuario, Livro livro) {

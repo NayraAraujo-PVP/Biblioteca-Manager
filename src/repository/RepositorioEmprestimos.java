@@ -5,7 +5,11 @@ import domain.Emprestimo;
 import domain.Livro;
 import domain.Usuario;
 import entities.EntidadeEmprestimo;
+import utils.DateUtils;
 
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -61,6 +65,41 @@ public class RepositorioEmprestimos {
                 .filter(entidadeEmprestimo -> !entidadeEmprestimo.isDevolvido())
                 .filter(entidadeEmprestimo -> entidadeEmprestimo.getCpfUsuario().equals(usuario.getCpf()))
                 .map(entidadeEmprestimo -> {
+                    Livro livro = repositorioLivros.buscar(entidadeEmprestimo.getIdLivro());
+                    return entidadeEmprestimo.converterParaEmprestimo(usuario, livro);
+                })
+                .toList();
+    }
+
+    public List<Emprestimo> buscarPorDataRetirada(LocalDate localDate) {
+        Instant inicio = localDate.atStartOfDay(ZoneId.systemDefault()).toInstant();
+        Instant fim = localDate.plusDays(1).atStartOfDay(ZoneId.systemDefault()).toInstant();
+
+        return emprestimoMap.values().stream()
+                .filter(entidadeEmprestimo -> {
+                    Instant retirada = DateUtils.converterDeString(entidadeEmprestimo.getDataRetirada()).toInstant();
+                    return retirada.isAfter(inicio) && retirada.isBefore(fim);
+                })
+                .map(entidadeEmprestimo -> {
+                    Usuario usuario = repositorioUsuarios.buscarUsuario(entidadeEmprestimo.getCpfUsuario());
+                    Livro livro = repositorioLivros.buscar(entidadeEmprestimo.getIdLivro());
+                    return entidadeEmprestimo.converterParaEmprestimo(usuario, livro);
+                })
+                .toList();
+    }
+
+    public List<Emprestimo> buscarDataDevolucao(LocalDate localDate) {
+        Instant inicio = localDate.atStartOfDay(ZoneId.systemDefault()).toInstant();
+        Instant fim = localDate.plusDays(1).atStartOfDay(ZoneId.systemDefault()).toInstant();
+
+        return emprestimoMap.values().stream()
+                .filter(entidadeEmprestimo -> {
+                    if(!entidadeEmprestimo.isDevolvido()) return false;
+                    Instant devolvido = DateUtils.converterDeString(entidadeEmprestimo.getDataDevolucao()).toInstant();
+                    return devolvido.isAfter(inicio) && devolvido.isBefore(fim);
+                })
+                .map(entidadeEmprestimo -> {
+                    Usuario usuario = repositorioUsuarios.buscarUsuario(entidadeEmprestimo.getCpfUsuario());
                     Livro livro = repositorioLivros.buscar(entidadeEmprestimo.getIdLivro());
                     return entidadeEmprestimo.converterParaEmprestimo(usuario, livro);
                 })
