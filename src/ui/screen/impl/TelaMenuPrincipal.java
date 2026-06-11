@@ -21,8 +21,7 @@ public class TelaMenuPrincipal extends Tela {
         componenteEscolha.registrarOpcao("Registrar devolução", this::registrarDevolucao);
         componenteEscolha.registrarOpcao("Acervo", this::acervo);
         componenteEscolha.registrarOpcao("Usuários", this::usuarios);
-        componenteEscolha.registrarOpcao("Consultas", this::consultas);
-        componenteEscolha.registrarOpcao("Sair", () -> System.exit(0));
+        componenteEscolha.registrarOpcao("Histórico", this::historico);
 
         componenteEscolha.mostrarOpcoes();
     }
@@ -75,23 +74,6 @@ public class TelaMenuPrincipal extends Tela {
         trocarTela(TelaEnum.PESQUISAR_USUARIO);
     }
 
-    private void consultas() {
-        System.out.println("CONSULTAS");
-
-        ComponenteEscolha componenteEscolha = new ComponenteEscolha(input);
-
-        componenteEscolha.registrarOpcao("Emprestados", this::consultarEmprestados);
-        componenteEscolha.registrarOpcao("Devolvidos", this::consultarDevolvidos);
-        componenteEscolha.registrarOpcao("Voltar", this::voltarMenu);
-
-        componenteEscolha.mostrarOpcoes();
-    }
-
-    private void consultarEmprestados() {
-        trocarTela(TelaEnum.CONSULTA_EMPRESTADOS);
-    }
-
-    private void consultarDevolvidos() {
-        trocarTela(TelaEnum.CONSULTA_DEVOLVIDOS);
+    private void historico() {
     }
 }
