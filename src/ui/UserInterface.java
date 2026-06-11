@@ -9,9 +9,22 @@ import ui.screen.impl.*;
 
 import java.util.Scanner;
 
+/**
+ * Classe responsável por gerenciar a interface de linha de comando (terminal) da aplicação.
+ * Ela configura as telas do sistema, realiza a injeção dos serviços necessários em cada uma delas 
+ * e inicia o ciclo de execução do programa.
+ */
 public class UserInterface {
     private final TelaManager telaManager = new TelaManager();
 
+    /**
+     * Configura os componentes da interface antes da execução principal. 
+     * Este método inicializa o leitor de entrada (Scanner), instancia todas as telas disponíveis, 
+     * registra cada uma no gerenciador de telas e define o Menu Principal como a tela inicial.
+     * * @param servicoEmprestimos Serviço responsável pela lógica de empréstimos e devoluções.
+     * @param servicoLivros      Serviço responsável pelo gerenciamento do acervo de livros.
+     * @param servicoUsuarios    Serviço responsável pelo cadastro e consulta de usuários.
+     */
     public void setup(ServicoEmprestimos servicoEmprestimos, ServicoLivros servicoLivros, ServicoUsuarios servicoUsuarios) {
         Scanner input = new Scanner(System.in);
 
@@ -45,6 +58,11 @@ public class UserInterface {
         telaManager.trocarTela(TelaEnum.MENU_PRINCIPAL);
     }
 
+    /**
+     * Inicia o loop de execução principal da interface. 
+     * O método mantém o programa em execução contínua, acionando o gerenciador para 
+     * exibir e processar a tela que estiver ativa no momento.
+     */
     public void start() {
         while (true) {
             telaManager.abrirTelaAtual();

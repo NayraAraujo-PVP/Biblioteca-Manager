@@ -18,11 +18,23 @@ import java.util.Scanner;
 
 import static ui.UIUtils.quebraLinha;
 
+/**
+ * Tela onde o usuário faz o empréstimo de um livro da biblioteca.
+ * Ela garante que o usuário e o livro existem no sistema antes de salvar o empréstimo.
+ */
 public class TelaRegistroDeEmprestimo extends Tela {
     private final ServicoEmprestimos servicoEmprestimos;
     private final ServicoLivros servicoLivros;
     private final ServicoUsuarios servicoUsuarios;
 
+    /**
+     * Construtor da tela de empréstimos.
+     * @param telaManager        Controlador das telas do sistema.
+     * @param input              O Scanner para ler as opções do teclado.
+     * @param servicoEmprestimos Serviço que salva o empréstimo.
+     * @param servicoLivros      Serviço para buscar o livro no acervo.
+     * @param servicoUsuarios    Serviço para buscar os dados do usuário.
+     */
     public TelaRegistroDeEmprestimo(TelaManager telaManager, Scanner input, ServicoEmprestimos servicoEmprestimos, ServicoLivros servicoLivros, ServicoUsuarios servicoUsuarios) {
         super(telaManager, input);
         this.servicoEmprestimos = servicoEmprestimos;
@@ -30,6 +42,10 @@ public class TelaRegistroDeEmprestimo extends Tela {
         this.servicoUsuarios = servicoUsuarios;
     }
 
+    /**
+     * {@inheritDoc}
+     * Abre a tela pedindo para identificar qual usuário quer pegar um livro.
+     */
     @Override
     protected void executar() {
         System.out.println("REGISTRO DE EMPRÉSTIMO");
@@ -38,6 +54,10 @@ public class TelaRegistroDeEmprestimo extends Tela {
         solicitarUsuario();
     }
 
+    /**
+     * Fica pedindo o CPF ou matrícula até encontrar o usuário no banco de dados.
+     * Também permite digitar 'voltar' para sair da tela.
+     */
     private void solicitarUsuario() {
         System.out.print("Digite o CPF ou matrícula do usuário, ou 'voltar' para retornar oo menu: ");
         String chaveDeBusca = input.nextLine();
@@ -61,6 +81,10 @@ public class TelaRegistroDeEmprestimo extends Tela {
         solicitarLivro(usuario);
     }
 
+    /**
+     * Pede o ID do livro que o usuário quer pegar emprestado.
+     * @param usuario O usuário que vai receber o empréstimo.
+     */
     private void solicitarLivro(Usuario usuario) {
         System.out.print("Digite o ID do livro ou 'voltar' para retornar oo menu: ");
         ComponenteInputNumero componenteInputNumero = new ComponenteInputNumero(input);
@@ -87,6 +111,12 @@ public class TelaRegistroDeEmprestimo extends Tela {
         realizarEmprestimo(usuario, livro);
     }
 
+    /**
+     * Tenta salvar o empréstimo no banco de dados.
+     * Se tudo der certo, mostra na tela a data limite que o livro precisa ser devolvido.
+     * @param usurio O usuário que pegou o livro.
+     * @param livro  O livro que está saindo da biblioteca.
+     */
     private void realizarEmprestimo(Usuario usurio, Livro livro) {
         Optional<Emprestimo> emprestimoRealizado = servicoEmprestimos.realizarEmprestimo(usurio, livro);
 
