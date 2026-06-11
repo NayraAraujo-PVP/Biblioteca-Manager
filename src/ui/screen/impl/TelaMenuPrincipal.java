@@ -27,6 +27,7 @@ public class TelaMenuPrincipal extends Tela {
     }
 
     private void registrarEmprestimo() {
+        trocarTela(TelaEnum.REGISTRO_DE_EMPRESTIMO);
     }
 
     private void registrarDevolucao() {

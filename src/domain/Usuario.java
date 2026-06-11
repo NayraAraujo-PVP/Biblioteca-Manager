@@ -47,6 +47,8 @@ public abstract class Usuario {
         }
     }
 
+    public abstract int prazoPermanencia();
+
     public abstract int calculaDiasAtraso(int diasPermanenciaLivro);
 
     public abstract Double calculaMulta(int diasDeAtraso);

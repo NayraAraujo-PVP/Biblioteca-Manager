@@ -30,6 +30,9 @@ public class UserInterface {
         TelaPesquisarUsuario telaPesquisarUsuario = new TelaPesquisarUsuario(telaManager, input, servicoUsuarios);
         telaManager.registrarTela(TelaEnum.PESQUISAR_USUARIO, telaPesquisarUsuario);
 
+        TelaRegistroDeEmprestimo telaRegistroDeEmprestimo = new TelaRegistroDeEmprestimo(telaManager, input, servicoEmprestimos, servicoLivros, servicoUsuarios);
+        telaManager.registrarTela(TelaEnum.REGISTRO_DE_EMPRESTIMO, telaRegistroDeEmprestimo);
+
         telaManager.trocarTela(TelaEnum.MENU_PRINCIPAL);
     }
 

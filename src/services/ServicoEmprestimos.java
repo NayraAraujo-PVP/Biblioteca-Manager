@@ -6,6 +6,7 @@ import domain.Usuario;
 import repository.RepositorioEmprestimos;
 
 import java.util.Date;
+import java.util.Optional;
 
 public class ServicoEmprestimos {
     private final RepositorioEmprestimos repositorioEmprestimos;
@@ -14,7 +15,7 @@ public class ServicoEmprestimos {
         this.repositorioEmprestimos = repositorioEmprestimos;
     }
 
-    public void realizarEmprestimo(Usuario usuario, Livro livro) {
+    public Optional<Emprestimo> realizarEmprestimo(Usuario usuario, Livro livro) {
         if(livro.verificaDisponivel() && usuario.verificaLimiteEmprestimos()) {
             int id = repositorioEmprestimos.getProximoId();
             Emprestimo emprestimo = new Emprestimo(id, usuario, livro, new Date());
@@ -23,7 +24,11 @@ public class ServicoEmprestimos {
             livro.adicionarUmEmprestado();
 
             repositorioEmprestimos.salvar(emprestimo);
+
+            return Optional.of(emprestimo);
         }
+
+        return Optional.empty();
     }
 
     public void realizarDevolucao(int id) {

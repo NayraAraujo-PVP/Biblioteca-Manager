@@ -4,6 +4,7 @@ import domain.Livro;
 import repository.RepositorioLivros;
 
 import java.util.List;
+import java.util.Optional;
 
 public class ServicoLivros {
     private final RepositorioLivros repositorioLivros;
@@ -14,6 +15,11 @@ public class ServicoLivros {
 
     public List<Livro> buscar(String termoPesquisa) {
         return repositorioLivros.buscar(termoPesquisa);
+    }
+
+    public Optional<Livro> buscarPorId(int id) {
+        if(repositorioLivros.contemId(id)) return Optional.of(repositorioLivros.buscar(id));
+        else return Optional.empty();
     }
 
     public void cadastrarLivro(String titulo, String autor, String categoria, int quantidadeTotal) {

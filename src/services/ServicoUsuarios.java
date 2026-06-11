@@ -2,8 +2,11 @@ package services;
 
 import domain.Aluno;
 import domain.Docente;
+import domain.Usuario;
 import domain.enums.TitulacaoAcademica;
 import java.util.List;
+import java.util.Optional;
+
 import repository.RepositorioUsuarios;
 
 public class ServicoUsuarios {
@@ -23,6 +26,10 @@ public class ServicoUsuarios {
 
     public List<Docente> buscarDocentes(String termoPesquisa) {
         return repositorioUsuarios.buscarDocentes(termoPesquisa);
+    }
+
+    public Optional<Usuario> buscarUsuarioPorCpfOuMatricula(String cpfOuMatricula) {
+        return repositorioUsuarios.buscarUsuarioPorCpfOuMatricula(cpfOuMatricula);
     }
 
     public void cadastrarAluno(String cpf, String nome, String matricula) {

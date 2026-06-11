@@ -1,0 +1,9 @@
+[ {
+  "id" : 1,
+  "cpfUsuario" : "123",
+  "idLivro" : 1,
+  "dataRetirada" : "2026-06-11T18:01:49.934Z",
+  "dataDevolucao" : null,
+  "valorMulta" : null,
+  "devolvido" : false
+} ]

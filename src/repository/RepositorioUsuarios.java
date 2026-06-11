@@ -11,6 +11,7 @@ import entities.EntidadeUsuario;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public class RepositorioUsuarios {
     private final Map<String, EntidadeAluno> alunoMap = new HashMap<>();
@@ -60,6 +61,17 @@ public class RepositorioUsuarios {
                         || entidadeDocente.getTitulacaoAcademica().name().toLowerCase().contains(termoPesquisa.toLowerCase()))
                 .map(EntidadeDocente::converterParaDocente)
                 .toList();
+    }
+
+    public Optional<Usuario> buscarUsuarioPorCpfOuMatricula(String cpfOuMatricula) {
+        if(usuarioMap.containsKey(cpfOuMatricula)) {
+            return Optional.of(usuarioMap.get(cpfOuMatricula).converterParaUsuario());
+        }
+
+        return alunoMap.values().stream()
+                .filter(entidadeAluno -> entidadeAluno.getMatricula().equals(cpfOuMatricula))
+                .findFirst()
+                .map(EntidadeAluno::converterParaAluno);
     }
 
     public void salvar(Aluno aluno) {

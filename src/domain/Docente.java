@@ -41,8 +41,13 @@ public class Docente extends Usuario {
     }
 
     @Override
+    public int prazoPermanencia() {
+        return 30;
+    }
+
+    @Override
     public int calculaDiasAtraso(int diasPermanenciaLivro) {
-        int prazoPermanencia = 30;
+        int prazoPermanencia = prazoPermanencia();
         int diasDeAtraso = diasPermanenciaLivro - prazoPermanencia;
 
         return Math.max(diasDeAtraso, 0);

@@ -66,6 +66,11 @@ public class Emprestimo {
         valorMulta = usuario.calculaMulta(diasDeAtraso);
     }
 
+    public Date dataLimiteDevolucao() {
+        int prazoPermanencia = usuario.prazoPermanencia();
+        return Date.from(dataRetirada.toInstant().plus(prazoPermanencia, ChronoUnit.DAYS));
+    }
+
     @Override
     public boolean equals(Object obj) {
         return obj instanceof Emprestimo emprestimo && emprestimo.id == this.id;
