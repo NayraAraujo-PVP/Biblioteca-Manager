@@ -41,8 +41,23 @@ public class ServicoEmprestimos {
 
     public List<Emprestimo> buscaEmprestimoPorLivro(Livro livro) {
         return repositorioEmprestimos.buscaEmprestimoPorLivro(livro);
+    /**
+     * Busca os empréstimos ativos de um usuário.
+     *
+     * @param usuario usuário consultado.
+     * @return lista de empréstimos encontrados.
+     */
+    public List<Emprestimo> buscarEmprestimosPara(Usuario usuario) {
+        return repositorioEmprestimos.buscarEmprestimosPara(usuario);
     }
 
+    /**
+     * Realiza um novo empréstimo de livro.
+     *
+     * @param usuario usuário que realizará o empréstimo.
+     * @param livro livro a ser emprestado.
+     * @return empréstimo criado, caso a operação seja válida.
+     */
     public Optional<Emprestimo> realizarEmprestimo(Usuario usuario, Livro livro) {
         if (livro.verificaDisponivel() && usuario.verificaLimiteEmprestimos()) {
             int id = repositorioEmprestimos.getProximoId();
