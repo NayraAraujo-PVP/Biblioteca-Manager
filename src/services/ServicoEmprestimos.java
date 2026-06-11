@@ -10,9 +10,19 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Serviço responsável pelo gerenciamento de empréstimos
+ * e devoluções de livros da biblioteca.
+ */
 public class ServicoEmprestimos {
+
     private final RepositorioEmprestimos repositorioEmprestimos;
 
+    /**
+     * Cria uma instância do serviço de empréstimos.
+     *
+     * @param repositorioEmprestimos repositório de empréstimos.
+     */
     public ServicoEmprestimos(RepositorioEmprestimos repositorioEmprestimos) {
         this.repositorioEmprestimos = repositorioEmprestimos;
     }
@@ -34,7 +44,7 @@ public class ServicoEmprestimos {
     }
 
     public Optional<Emprestimo> realizarEmprestimo(Usuario usuario, Livro livro) {
-        if(livro.verificaDisponivel() && usuario.verificaLimiteEmprestimos()) {
+        if (livro.verificaDisponivel() && usuario.verificaLimiteEmprestimos()) {
             int id = repositorioEmprestimos.getProximoId();
             Emprestimo emprestimo = new Emprestimo(id, usuario, livro, new Date());
 
@@ -49,12 +59,22 @@ public class ServicoEmprestimos {
         return Optional.empty();
     }
 
+    /**
+     * Registra a devolução de um empréstimo.
+     *
+     * @param id identificador do empréstimo.
+     * @return empréstimo atualizado, caso exista e não tenha sido devolvido.
+     */
     public Optional<Emprestimo> realizarDevolucao(int id) {
-        if(!repositorioEmprestimos.contemId(id)) return Optional.empty();
+        if (!repositorioEmprestimos.contemId(id)) {
+            return Optional.empty();
+        }
 
         Emprestimo emprestimo = repositorioEmprestimos.buscar(id);
 
-        if(emprestimo.isDevolvido()) return Optional.empty();
+        if (emprestimo.isDevolvido()) {
+            return Optional.empty();
+        }
 
         emprestimo.registrarDevolucao(new Date());
 
