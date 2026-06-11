@@ -6,6 +6,7 @@ import domain.Usuario;
 import repository.RepositorioEmprestimos;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 public class ServicoEmprestimos {
@@ -13,6 +14,10 @@ public class ServicoEmprestimos {
 
     public ServicoEmprestimos(RepositorioEmprestimos repositorioEmprestimos) {
         this.repositorioEmprestimos = repositorioEmprestimos;
+    }
+
+    public List<Emprestimo> buscarEmprestimosPara(Usuario usuario) {
+        return repositorioEmprestimos.buscarEmprestimosPara(usuario);
     }
 
     public Optional<Emprestimo> realizarEmprestimo(Usuario usuario, Livro livro) {
@@ -31,12 +36,12 @@ public class ServicoEmprestimos {
         return Optional.empty();
     }
 
-    public void realizarDevolucao(int id) {
-        if(!repositorioEmprestimos.contemId(id)) return;
+    public Optional<Emprestimo> realizarDevolucao(int id) {
+        if(!repositorioEmprestimos.contemId(id)) return Optional.empty();
 
         Emprestimo emprestimo = repositorioEmprestimos.buscar(id);
 
-        if(emprestimo.isDevolvido()) return;
+        if(emprestimo.isDevolvido()) return Optional.empty();
 
         emprestimo.registrarDevolucao(new Date());
 
@@ -44,5 +49,7 @@ public class ServicoEmprestimos {
         emprestimo.getLivro().retirarUmEmprestado();
 
         repositorioEmprestimos.salvar(emprestimo);
+
+        return Optional.of(emprestimo);
     }
 }

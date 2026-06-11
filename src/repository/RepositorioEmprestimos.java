@@ -55,4 +55,15 @@ public class RepositorioEmprestimos {
     public int getProximoId() {
         return emprestimoMap.keySet().stream().mapToInt(o -> o).max().orElse(0) + 1;
     }
+
+    public List<Emprestimo> buscarEmprestimosPara(Usuario usuario) {
+        return emprestimoMap.values().stream()
+                .filter(entidadeEmprestimo -> !entidadeEmprestimo.isDevolvido())
+                .filter(entidadeEmprestimo -> entidadeEmprestimo.getCpfUsuario().equals(usuario.getCpf()))
+                .map(entidadeEmprestimo -> {
+                    Livro livro = repositorioLivros.buscar(entidadeEmprestimo.getIdLivro());
+                    return entidadeEmprestimo.converterParaEmprestimo(usuario, livro);
+                })
+                .toList();
+    }
 }

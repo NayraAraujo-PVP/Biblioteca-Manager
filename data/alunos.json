@@ -1,6 +1,6 @@
 [ {
   "nome" : "Vinicius",
   "cpf" : "123",
-  "emprestimosAtivos" : 1,
+  "emprestimosAtivos" : 0,
   "matricula" : "321"
 } ]

@@ -3,7 +3,23 @@
   "cpfUsuario" : "123",
   "idLivro" : 1,
   "dataRetirada" : "2026-06-11T18:01:49.934Z",
-  "dataDevolucao" : null,
+  "dataDevolucao" : "2026-06-30T15:54:15.853Z",
+  "valorMulta" : 2.0,
+  "devolvido" : true
+}, {
+  "id" : 2,
+  "cpfUsuario" : "123",
+  "idLivro" : 4,
+  "dataRetirada" : "2026-06-11T15:30:47.201Z",
+  "dataDevolucao" : "2026-06-11T15:52:04.712Z",
   "valorMulta" : null,
-  "devolvido" : false
+  "devolvido" : true
+}, {
+  "id" : 3,
+  "cpfUsuario" : "123",
+  "idLivro" : 4,
+  "dataRetirada" : "2026-06-11T15:56:10.214Z",
+  "dataDevolucao" : "2026-06-27T15:56:42.827Z",
+  "valorMulta" : 1.0,
+  "devolvido" : true
 } ]
