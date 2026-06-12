@@ -27,8 +27,19 @@ public class ServicoEmprestimos {
         this.repositorioEmprestimos = repositorioEmprestimos;
     }
 
+<<<<<<< HEAD
     public List<Emprestimo> buscarEmprestimosPara(Usuario usuario, boolean somenteAtivos) {
         return repositorioEmprestimos.buscarEmprestimosPara(usuario, somenteAtivos);
+=======
+    /**
+     * Busca os empréstimos ativos de um usuário.
+     *
+     * @param usuario usuário consultado.
+     * @return lista de empréstimos encontrados.
+     */
+    public List<Emprestimo> buscarEmprestimosPara(Usuario usuario) {
+        return repositorioEmprestimos.buscarEmprestimosPara(usuario);
+>>>>>>> 84849df705957215ad6ed774bfdbb34642cec245
     }
 
     public List<Emprestimo> buscarPorDataRetirada(LocalDate localDate) {
@@ -39,6 +50,7 @@ public class ServicoEmprestimos {
         return repositorioEmprestimos.buscarDataDevolucao(localDate);
     }
 
+<<<<<<< HEAD
     public List<Emprestimo> buscaEmprestimoPorLivro(Livro livro) {
         return repositorioEmprestimos.buscaEmprestimoPorLivro(livro);
     /**
@@ -51,6 +63,8 @@ public class ServicoEmprestimos {
         return repositorioEmprestimos.buscarEmprestimosPara(usuario);
     }
 
+=======
+>>>>>>> 84849df705957215ad6ed774bfdbb34642cec245
     /**
      * Realiza um novo empréstimo de livro.
      *

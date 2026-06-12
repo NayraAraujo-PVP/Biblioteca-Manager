@@ -118,6 +118,7 @@ public class TelaMenuPrincipal extends Tela {
         trocarTela(TelaEnum.PESQUISAR_USUARIO);
     }
 
+<<<<<<< HEAD
     private void consultas() {
         System.out.println("CONSULTAS");
 
@@ -138,10 +139,13 @@ public class TelaMenuPrincipal extends Tela {
 
     private void consultarDevolvidos() {
         trocarTela(TelaEnum.CONSULTA_DEVOLVIDOS);
+=======
+>>>>>>> 84849df705957215ad6ed774bfdbb34642cec245
     /**
      * Exibe o histórico do sistema.
      */
     private void historico() {
+<<<<<<< HEAD
     }
 
     private void consultarPorLivros() {
@@ -150,5 +154,7 @@ public class TelaMenuPrincipal extends Tela {
 
     private void consultarHistoricoUsuario() {
         trocarTela(TelaEnum.CONSULTA_HISTORICO_USUARIO);
+=======
+>>>>>>> 84849df705957215ad6ed774bfdbb34642cec245
     }
 }

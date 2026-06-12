@@ -72,6 +72,7 @@ public class EntidadeAluno extends EntidadeUsuario {
                 aluno.getEmprestimosAtivos(),
                 aluno.getMatricula()
         );
+<<<<<<< HEAD
     }
 <<<<<<< HEAD
 }package entities;
@@ -155,3 +156,7 @@ public class EntidadeAluno extends EntidadeUsuario {
 =======
 }
 >>>>>>> 84849df (Ajustando docentes, entidade aluno e TelaPUs)
+=======
+    }
+}
+>>>>>>> 84849df705957215ad6ed774bfdbb34642cec245
