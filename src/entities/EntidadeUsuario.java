@@ -59,4 +59,4 @@ public abstract class EntidadeUsuario {
      */
     public abstract Usuario converterParaUsuario();
 }
-}
+
