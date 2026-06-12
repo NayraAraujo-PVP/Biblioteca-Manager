@@ -6,11 +6,26 @@ import ui.screen.Tela;
 import ui.screen.TelaEnum;
 import ui.screen.TelaManager;
 
+/**
+ * Tela principal (hub) do sistema que gerencia o fluxo de navegação entre os 
+ * diversos módulos, como empréstimos, acervo, usuários e consultas.
+ * Utiliza o {@link ComponenteEscolha} para apresentar o menu de navegação ao usuário.
+ */
 public class TelaMenuPrincipal extends Tela {
+
+    /**
+     * Constrói a tela de menu principal.
+     *
+     * @param telaManager o gerenciador responsável pela troca de telas.
+     * @param input       o {@link Scanner} para entrada de dados.
+     */
     public TelaMenuPrincipal(TelaManager telaManager, Scanner input) {
         super(telaManager, input);
     }
 
+    /**
+     * Executa o menu principal, exibindo as opções de navegação disponíveis.
+     */
     @Override
     protected void executar() {
         System.out.println("MENU PRINCIPAL");
@@ -35,6 +50,9 @@ public class TelaMenuPrincipal extends Tela {
         trocarTela(TelaEnum.REGISTRO_DE_DEVOLUCAO);
     }
 
+    /**
+     * Exibe o sub-menu de gerenciamento do acervo (Livros).
+     */
     private void acervo() {
         System.out.println("ACERVO");
 
@@ -55,6 +73,9 @@ public class TelaMenuPrincipal extends Tela {
         trocarTela(TelaEnum.PESQUISAR_LIVRO);
     }
 
+    /**
+     * Exibe o sub-menu de gerenciamento de usuários.
+     */
     private void usuarios() {
         System.out.println("USUÁRIOS");
 
@@ -75,6 +96,9 @@ public class TelaMenuPrincipal extends Tela {
         trocarTela(TelaEnum.PESQUISAR_USUARIO);
     }
 
+    /**
+     * Exibe o sub-menu de relatórios e consultas do sistema.
+     */
     private void consultas() {
         System.out.println("CONSULTAS");
 

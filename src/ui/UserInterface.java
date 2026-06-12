@@ -9,9 +9,26 @@ import ui.screen.impl.*;
 
 import java.util.Scanner;
 
+/**
+ * Classe responsável pela configuração e inicialização da interface do usuário.
+ * Realiza o registro de todas as telas no {@link TelaManager} e gerencia o loop
+ * principal de execução da aplicação.
+ */
 public class UserInterface {
+    
+    /**
+     * Gerenciador central de navegação entre as telas.
+     */
     private final TelaManager telaManager = new TelaManager();
 
+    /**
+     * Configura o ambiente da interface, instanciando as telas e registrando-as 
+     * no gerenciador de telas.
+     *
+     * @param servicoEmprestimos serviço de negócios para operações de empréstimos.
+     * @param servicoLivros      serviço de negócios para operações de acervo.
+     * @param servicoUsuarios    serviço de negócios para operações de usuários.
+     */
     public void setup(ServicoEmprestimos servicoEmprestimos, ServicoLivros servicoLivros, ServicoUsuarios servicoUsuarios) {
         Scanner input = new Scanner(System.in);
 
@@ -51,6 +68,10 @@ public class UserInterface {
         telaManager.trocarTela(TelaEnum.MENU_PRINCIPAL);
     }
 
+    /**
+     * Inicia o loop principal da aplicação, mantendo o sistema em execução
+     * até que o usuário encerre o programa.
+     */
     public void start() {
         while (true) {
             telaManager.abrirTelaAtual();

@@ -12,14 +12,30 @@ import ui.components.ComponenteVisualizacaoBlocos;
 import ui.screen.Tela;
 import ui.screen.TelaManager;
 
+/**
+ * Tela de interface responsável pela pesquisa, visualização e edição de registros de livros.
+ * Permite buscar obras por diversos critérios, selecionar um item do acervo e realizar
+ * operações de edição, alteração de estoque ou remoção.
+ */
 public class TelaPesquisarLivro extends Tela {
+
     private final ServicoLivros servicoLivros;
 
+    /**
+     * Constrói a tela de pesquisa de livros.
+     *
+     * @param telaManager   o gerenciador de navegação entre telas.
+     * @param input         o {@link Scanner} para entrada de dados.
+     * @param servicoLivros o serviço de livros utilizado para as operações de busca e edição.
+     */
     public TelaPesquisarLivro(TelaManager telaManager, Scanner input, ServicoLivros servicoLivros) {
         super(telaManager, input);
         this.servicoLivros = servicoLivros;
     }
 
+    /**
+     * Executa o fluxo inicial da tela de pesquisa.
+     */
     @Override
     protected void executar() {
         System.out.println("PESQUISAR LIVRO");
@@ -28,6 +44,9 @@ public class TelaPesquisarLivro extends Tela {
         iniciarPesquisa();
     }
 
+    /**
+     * Solicita ao usuário um termo de pesquisa e exibe os resultados encontrados.
+     */
     private void iniciarPesquisa() {
         System.out.print("Insira seu termo de pesquisa (titulo, autor ou categoria) ou 'voltar' para retornar ao menu: ");
 
@@ -43,6 +62,7 @@ public class TelaPesquisarLivro extends Tela {
             System.out.println("Nenhum livro encontrado!");
             quebraLinha();
             iniciarPesquisa();
+            return;
         }
 
         ComponenteVisualizacaoBlocos componenteVisualizacaoBlocos = new ComponenteVisualizacaoBlocos(
@@ -67,6 +87,11 @@ public class TelaPesquisarLivro extends Tela {
         iniciarSelecaoLivro(livros);
     }
 
+    /**
+     * Gerencia a seleção de um livro específico a partir da lista de resultados.
+     *
+     * @param livros a lista de livros que foi exibida na pesquisa.
+     */
     private void iniciarSelecaoLivro(List<Livro> livros) {
         quebraLinha();
         System.out.println("Digite o ID do livro desejado ou 'voltar' para pesquisar novamente");
@@ -76,17 +101,16 @@ public class TelaPesquisarLivro extends Tela {
 
         int escolha = componenteInputNumero.receberNumero();
 
-        if(escolha == -1) {
+        if (escolha == -1) {
             iniciarPesquisa();
             return;
         }
 
         Optional<Livro> livroSelecionadoOpt = livros.stream().filter(livro -> livro.getId() == escolha).findFirst();
 
-        if(livroSelecionadoOpt.isEmpty()) {
+        if (livroSelecionadoOpt.isEmpty()) {
             System.out.println("Livro não encontrado");
             iniciarSelecaoLivro(livros);
-
             return;
         }
 
@@ -94,6 +118,11 @@ public class TelaPesquisarLivro extends Tela {
         apresentarOpcoesLivro(livroSelecionado);
     }
 
+    /**
+     * Exibe o menu de opções disponíveis para um livro selecionado.
+     *
+     * @param livroSelecionado o objeto livro alvo das operações.
+     */
     private void apresentarOpcoesLivro(Livro livroSelecionado) {
         quebraLinha();
         System.out.printf("O livro '%s' foi selecionado %n", livroSelecionado.getTitulo());
@@ -108,18 +137,21 @@ public class TelaPesquisarLivro extends Tela {
         componenteEscolha.mostrarOpcoes();
     }
 
+    /**
+     * Fluxo para edição dos dados básicos de um livro.
+     */
     private void editarLivro(Livro livroSelecionado) {
         System.out.print("Novo título [" + livroSelecionado.getTitulo() + "]: ");
         String novoTitulo = input.nextLine();
-        if(novoTitulo.trim().isEmpty()) novoTitulo = livroSelecionado.getTitulo();
+        if (novoTitulo.trim().isEmpty()) novoTitulo = livroSelecionado.getTitulo();
 
         System.out.print("Novo autor [" + livroSelecionado.getAutor() + "]: ");
         String novoAutor = input.nextLine();
-        if(novoAutor.trim().isEmpty()) novoAutor = livroSelecionado.getAutor();
+        if (novoAutor.trim().isEmpty()) novoAutor = livroSelecionado.getAutor();
 
         System.out.print("Nova categoria [" + livroSelecionado.getCategoria() + "]: ");
         String novaCategoria = input.nextLine();
-        if(novaCategoria.trim().isEmpty()) novaCategoria = livroSelecionado.getCategoria();
+        if (novaCategoria.trim().isEmpty()) novaCategoria = livroSelecionado.getCategoria();
 
         quebraLinha();
 
@@ -127,13 +159,17 @@ public class TelaPesquisarLivro extends Tela {
         voltarMenu();
     }
 
+    /**
+     * Fluxo para alteração da quantidade total de exemplares de um livro, validando
+     * se a nova quantidade não é inferior aos exemplares já emprestados.
+     */
     private void alterarQuantidadeLivro(Livro livroSelecionado) {
         System.out.println("Digite a nova quantidade total deste livro:");
 
         ComponenteInputNumero componenteInputNumero = new ComponenteInputNumero(input);
         int novaQuantidade = componenteInputNumero.receberNumero();
 
-        if(livroSelecionado.getQuantidadeEmprestada() > novaQuantidade) {
+        if (livroSelecionado.getQuantidadeEmprestada() > novaQuantidade) {
             System.out.println("Impossível a alteração");
             System.out.println("Motivo: há mais unidades emprestadas do que a quantidade inserida.");
 
@@ -145,8 +181,11 @@ public class TelaPesquisarLivro extends Tela {
         voltarMenu();
     }
 
+    /**
+     * Fluxo para remoção lógica de um livro, validando se não existem unidades emprestadas.
+     */
     private void removerLivro(Livro livroSelecionado) {
-        if(livroSelecionado.getQuantidadeEmprestada() > 0) {
+        if (livroSelecionado.getQuantidadeEmprestada() > 0) {
             System.out.println("Impossível a remoção");
             System.out.println("Motivo: há unidades emprestadas.");
 

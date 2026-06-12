@@ -13,14 +13,29 @@ import ui.components.ComponenteVisualizacaoBlocos;
 import ui.screen.Tela;
 import ui.screen.TelaManager;
 
+/**
+ * Tela de interface responsável pela pesquisa, visualização e edição de registros de usuários (Alunos e Docentes).
+ * Permite buscar usuários por diversos critérios, selecionar um perfil específico e editar suas informações cadastrais.
+ */
 public class TelaPesquisarUsuario extends Tela {
+
     private final ServicoUsuarios servicoUsuarios;
 
+    /**
+     * Constrói a tela de pesquisa de usuários.
+     *
+     * @param telaManager     o gerenciador de navegação entre telas.
+     * @param input           o {@link Scanner} para entrada de dados.
+     * @param servicoUsuarios o serviço de usuários utilizado para as operações de busca e edição.
+     */
     public TelaPesquisarUsuario(TelaManager telaManager, Scanner input, ServicoUsuarios servicoUsuarios) {
         super(telaManager, input);
         this.servicoUsuarios = servicoUsuarios;
     }
 
+    /**
+     * Exibe o menu inicial de seleção do tipo de usuário para pesquisa.
+     */
     @Override
     protected void executar() {
         System.out.println("Selecione o tipo de usuário:");
@@ -33,6 +48,9 @@ public class TelaPesquisarUsuario extends Tela {
         componenteEscolha.mostrarOpcoes();
     }
 
+    /**
+     * Inicia o fluxo de pesquisa de alunos.
+     */
     private void pesquisarAluno() {
         System.out.println("PESQUISAR ALUNO");
         quebraLinha();
@@ -40,6 +58,9 @@ public class TelaPesquisarUsuario extends Tela {
         iniciarPesquisaAluno();
     }
 
+    /**
+     * Solicita um termo de pesquisa e exibe os alunos correspondentes.
+     */
     private void iniciarPesquisaAluno() {
         System.out.print("Insira seu termo de pesquisa (nome, CPF ou matrícula) ou 'voltar' para retornar ao menu: ");
 
@@ -81,6 +102,9 @@ public class TelaPesquisarUsuario extends Tela {
         iniciarSelecaoAluno(alunos);
     }
 
+    /**
+     * Gerencia a seleção de um aluno específico a partir da lista de resultados.
+     */
     private void iniciarSelecaoAluno(List<Aluno> alunos) {
         quebraLinha();
         System.out.println("Digite o ID do aluno desejado ou 'voltar' para pesquisar novamente");
@@ -90,15 +114,14 @@ public class TelaPesquisarUsuario extends Tela {
 
         int escolha = componenteInputNumero.receberNumero();
 
-        if(escolha == -1) {
+        if (escolha == -1) {
             iniciarPesquisaAluno();
             return;
         }
 
-        if(escolha <= 0 || escolha > alunos.size()) {
+        if (escolha <= 0 || escolha > alunos.size()) {
             System.out.println("Aluno não encontrado");
             iniciarSelecaoAluno(alunos);
-
             return;
         }
 
@@ -106,6 +129,9 @@ public class TelaPesquisarUsuario extends Tela {
         apresentarOpcoesAluno(alunoSelecionado);
     }
 
+    /**
+     * Apresenta opções de ação para o aluno selecionado (ex: editar).
+     */
     private void apresentarOpcoesAluno(Aluno alunoSelecionado) {
         quebraLinha();
         System.out.printf("O aluno '%s' foi selecionado %n", alunoSelecionado.getNome());
@@ -118,14 +144,17 @@ public class TelaPesquisarUsuario extends Tela {
         componenteEscolha.mostrarOpcoes();
     }
 
+    /**
+     * Fluxo para edição dos dados de um aluno.
+     */
     private void editarAluno(Aluno alunoSelecionado) {
         System.out.print("Novo nome [" + alunoSelecionado.getNome() + "]: ");
         String novoNome = input.nextLine();
-        if(novoNome.trim().isEmpty()) novoNome = alunoSelecionado.getNome();
+        if (novoNome.trim().isEmpty()) novoNome = alunoSelecionado.getNome();
 
         System.out.print("Nova matrícula [" + alunoSelecionado.getMatricula() + "]: ");
         String novaMatricula = input.nextLine();
-        if(novaMatricula.trim().isEmpty()) novaMatricula = alunoSelecionado.getMatricula();
+        if (novaMatricula.trim().isEmpty()) novaMatricula = alunoSelecionado.getMatricula();
 
         quebraLinha();
 
@@ -133,6 +162,9 @@ public class TelaPesquisarUsuario extends Tela {
         voltarMenu();
     }
 
+    /**
+     * Inicia o fluxo de pesquisa de docentes.
+     */
     private void pesquisarDocente() {
         System.out.println("PESQUISAR DOCENTE");
         quebraLinha();
@@ -140,6 +172,9 @@ public class TelaPesquisarUsuario extends Tela {
         iniciarPesquisaDocente();
     }
 
+    /**
+     * Solicita um termo de pesquisa e exibe os docentes correspondentes.
+     */
     private void iniciarPesquisaDocente() {
         System.out.print("Insira seu termo de pesquisa (nome, CPF, departamento ou titulação acadêmica) ou 'voltar' para retornar ao menu: ");
 
@@ -183,6 +218,9 @@ public class TelaPesquisarUsuario extends Tela {
         iniciarSelecaoDocente(docentes);
     }
 
+    /**
+     * Gerencia a seleção de um docente específico a partir da lista de resultados.
+     */
     private void iniciarSelecaoDocente(List<Docente> docentes) {
         quebraLinha();
         System.out.println("Digite o ID do docente desejado ou 'voltar' para pesquisar novamente");
@@ -192,15 +230,14 @@ public class TelaPesquisarUsuario extends Tela {
 
         int escolha = componenteInputNumero.receberNumero();
 
-        if(escolha == -1) {
+        if (escolha == -1) {
             iniciarPesquisaDocente();
             return;
         }
 
-        if(escolha <= 0 || escolha > docentes.size()) {
+        if (escolha <= 0 || escolha > docentes.size()) {
             System.out.println("Docente não encontrado");
             iniciarSelecaoDocente(docentes);
-
             return;
         }
 
@@ -208,6 +245,9 @@ public class TelaPesquisarUsuario extends Tela {
         apresentarOpcoesDocente(docenteSelecionado);
     }
 
+    /**
+     * Apresenta opções de ação para o docente selecionado.
+     */
     private void apresentarOpcoesDocente(Docente docenteSelecionado) {
         quebraLinha();
         System.out.printf("O docente '%s' foi selecionado %n", docenteSelecionado.getNome());
@@ -220,14 +260,17 @@ public class TelaPesquisarUsuario extends Tela {
         componenteEscolha.mostrarOpcoes();
     }
 
+    /**
+     * Fluxo para edição dos dados de um docente.
+     */
     private void editarDocente(Docente docenteSelecionado) {
         System.out.print("Novo nome [" + docenteSelecionado.getNome() + "]: ");
         String novoNome = input.nextLine();
-        if(novoNome.trim().isEmpty()) novoNome = docenteSelecionado.getNome();
+        if (novoNome.trim().isEmpty()) novoNome = docenteSelecionado.getNome();
 
         System.out.print("Novo departamento [" + docenteSelecionado.getDepartamento() + "]: ");
         String novoDepartamento = input.nextLine();
-        if(novoDepartamento.trim().isEmpty()) novoDepartamento = docenteSelecionado.getDepartamento();
+        if (novoDepartamento.trim().isEmpty()) novoDepartamento = docenteSelecionado.getDepartamento();
 
         System.out.print("Nova titulação acadêmica [" + docenteSelecionado.getTitulacaoAcademica() + "]: ");
         ComponenteEscolha componenteEscolha = new ComponenteEscolha(input);
@@ -241,9 +284,11 @@ public class TelaPesquisarUsuario extends Tela {
         componenteEscolha.mostrarOpcoes();
     }
 
+    /**
+     * Finaliza o processo de edição de dados do docente.
+     */
     private void finalizarEdicaoDocente(String cpf, String novoNome, String novoDepartamento, TitulacaoAcademica novaTitulacaoAcademica) {
         quebraLinha();
-
         servicoUsuarios.editarDocente(cpf, novoNome, novoDepartamento, novaTitulacaoAcademica);
         voltarMenu();
     }

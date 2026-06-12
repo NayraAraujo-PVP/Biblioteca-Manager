@@ -15,14 +15,30 @@ import java.util.Scanner;
 
 import static ui.UIUtils.quebraLinha;
 
+/**
+ * Tela de interface responsável pela consulta de livros devolvidos em datas específicas.
+ * Permite ao usuário filtrar empréstimos finalizados por data e apresenta os resultados
+ * de forma tabular estruturada via {@link ComponenteVisualizacaoBlocos}.
+ */
 public class TelaConsultaDevolucao extends Tela {
+
     private final ServicoEmprestimos servicoEmprestimos;
 
+    /**
+     * Constrói a tela de consulta de devoluções.
+     *
+     * @param telaManager        o gerenciador de navegação entre telas.
+     * @param input              o {@link Scanner} para entrada de dados.
+     * @param servicoEmprestimos o serviço utilizado para consultar registros de empréstimos.
+     */
     public TelaConsultaDevolucao(TelaManager telaManager, Scanner input, ServicoEmprestimos servicoEmprestimos) {
         super(telaManager, input);
         this.servicoEmprestimos = servicoEmprestimos;
     }
 
+    /**
+     * Executa o fluxo inicial da tela, exibindo o cabeçalho e disparando a solicitação de data.
+     */
     @Override
     protected void executar() {
         System.out.println("CONSULTAR LIVROS DEVOLVIDOS");
@@ -31,6 +47,9 @@ public class TelaConsultaDevolucao extends Tela {
         solicitaData();
     }
 
+    /**
+     * Solicita ao usuário a data da consulta, oferecendo atalhos (pseudônimos) como 'voltar' e 'hoje'.
+     */
     private void solicitaData() {
         System.out.println("Digite a data da consulta ou 'voltar' para retornar ao menu");
 
@@ -40,7 +59,7 @@ public class TelaConsultaDevolucao extends Tela {
 
         LocalDate dataEscolhida = componenteInputData.receberData();
 
-        if(dataEscolhida == null) {
+        if (dataEscolhida == null) {
             trocarTela(TelaEnum.MENU_PRINCIPAL);
             return;
         }
@@ -48,6 +67,11 @@ public class TelaConsultaDevolucao extends Tela {
         buscarData(dataEscolhida);
     }
 
+    /**
+     * Busca e exibe os empréstimos devolvidos na data selecionada.
+     *
+     * @param dataEscolhida a data de referência para a consulta.
+     */
     private void buscarData(LocalDate dataEscolhida) {
         List<Emprestimo> emprestimoList = servicoEmprestimos.buscarDataDevolucao(dataEscolhida);
 

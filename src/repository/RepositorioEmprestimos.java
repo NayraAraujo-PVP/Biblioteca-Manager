@@ -15,16 +15,27 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+/**
+ * Repositório responsável pelo gerenciamento da persistência e recuperação de instâncias de {@link Emprestimo}.
+ * Atua como uma camada de intermediação entre os objetos de domínio e a persistência de dados,
+ * orquestrando a relação entre usuários, livros e os registros de empréstimos.
+ */
 public class RepositorioEmprestimos {
-    private final Map<Integer, EntidadeEmprestimo> emprestimoMap = new HashMap<>();
 
+    private final Map<Integer, EntidadeEmprestimo> emprestimoMap = new HashMap<>();
     private final RepositorioLivros repositorioLivros;
     private final RepositorioUsuarios repositorioUsuarios;
-
     private final DataManager dataManager;
 
     private static final String EMPRESTIMOS_FILENAME = "emprestimos";
 
+    /**
+     * Constrói o repositório, carregando os dados persistidos através do {@link DataManager}.
+     *
+     * @param repositorioLivros   instância do repositório de livros.
+     * @param repositorioUsuarios instância do repositório de usuários.
+     * @param dataManager         instância do gerenciador de dados para persistência em arquivo.
+     */
     public RepositorioEmprestimos(RepositorioLivros repositorioLivros, RepositorioUsuarios repositorioUsuarios, DataManager dataManager) {
         this.repositorioLivros = repositorioLivros;
         this.repositorioUsuarios = repositorioUsuarios;
@@ -36,6 +47,12 @@ public class RepositorioEmprestimos {
         }
     }
 
+    /**
+     * Salva ou atualiza um registro de empréstimo, persistindo também as alterações de estado
+     * nos repositórios associados (usuário e livro).
+     *
+     * @param emprestimo o empréstimo a ser salvo.
+     */
     public void salvar(Emprestimo emprestimo) {
         repositorioLivros.salvar(emprestimo.getLivro());
         repositorioUsuarios.salvar(emprestimo.getUsuario());
@@ -44,6 +61,12 @@ public class RepositorioEmprestimos {
         dataManager.salvar(EMPRESTIMOS_FILENAME, emprestimoMap.values());
     }
 
+    /**
+     * Busca um empréstimo pelo seu identificador único.
+     *
+     * @param id identificador do empréstimo.
+     * @return um {@link Optional} contendo o empréstimo se encontrado, ou vazio caso contrário.
+     */
     public Optional<Emprestimo> buscar(int id) {
         EntidadeEmprestimo entidadeEmprestimo = emprestimoMap.get(id);
 
@@ -60,10 +83,22 @@ public class RepositorioEmprestimos {
         return Optional.of(entidadeEmprestimo.converterParaEmprestimo(usuario, livro));
     }
 
+    /**
+     * Calcula o próximo identificador disponível para um novo empréstimo.
+     *
+     * @return o próximo ID incremental.
+     */
     public int getProximoId() {
         return emprestimoMap.keySet().stream().mapToInt(o -> o).max().orElse(0) + 1;
     }
 
+    /**
+     * Recupera todos os empréstimos associados a um determinado usuário.
+     *
+     * @param usuario       o usuário alvo.
+     * @param somenteAtivos se true, filtra apenas empréstimos ainda não devolvidos.
+     * @return lista de empréstimos encontrados.
+     */
     public List<Emprestimo> buscarEmprestimosPara(Usuario usuario, boolean somenteAtivos) {
         return emprestimoMap.values().stream()
                 .filter(entidadeEmprestimo -> !somenteAtivos || !entidadeEmprestimo.isDevolvido())
@@ -78,6 +113,12 @@ public class RepositorioEmprestimos {
                 .toList();
     }
 
+    /**
+     * Busca empréstimos realizados em uma data específica.
+     *
+     * @param localDate a data de referência.
+     * @return lista de empréstimos com data de retirada correspondente à data informada.
+     */
     public List<Emprestimo> buscarPorDataRetirada(LocalDate localDate) {
         Instant inicio = localDate.atStartOfDay(ZoneId.systemDefault()).toInstant();
         Instant fim = localDate.plusDays(1).atStartOfDay(ZoneId.systemDefault()).toInstant();
@@ -101,6 +142,12 @@ public class RepositorioEmprestimos {
                 .toList();
     }
 
+    /**
+     * Busca empréstimos devolvidos em uma data específica.
+     *
+     * @param localDate a data de referência.
+     * @return lista de empréstimos com data de devolução correspondente à data informada.
+     */
     public List<Emprestimo> buscarDataDevolucao(LocalDate localDate) {
         Instant inicio = localDate.atStartOfDay(ZoneId.systemDefault()).toInstant();
         Instant fim = localDate.plusDays(1).atStartOfDay(ZoneId.systemDefault()).toInstant();
@@ -125,6 +172,12 @@ public class RepositorioEmprestimos {
                 .toList();
     }
 
+    /**
+     * Busca empréstimos ativos para um determinado livro.
+     *
+     * @param livro o livro alvo da busca.
+     * @return lista de empréstimos em aberto para o livro.
+     */
     public List<Emprestimo> buscaEmprestimoPorLivro(Livro livro) {
         return emprestimoMap.values().stream()
                 .filter(entidadeEmprestimo -> entidadeEmprestimo.getIdLivro() == livro.getId() && !entidadeEmprestimo.isDevolvido())
