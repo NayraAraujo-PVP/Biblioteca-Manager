@@ -7,6 +7,7 @@ import entities.EntidadeLivro;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public class RepositorioLivros {
     private final Map<Integer, EntidadeLivro> livroMap = new HashMap<>();
@@ -30,12 +31,8 @@ public class RepositorioLivros {
         dataManager.salvar(LIVROS_FILENAME, livroMap.values());
     }
 
-    public boolean contemId(int id) {
-        return livroMap.containsKey(id);
-    }
-
-    public Livro buscar(int id) {
-        return livroMap.get(id).converterParaLivro();
+    public Optional<Livro> buscar(int id) {
+        return Optional.ofNullable(livroMap.get(id)).map(EntidadeLivro::converterParaLivro);
     }
 
     public List<Livro> buscar(String termoPesquisa) {

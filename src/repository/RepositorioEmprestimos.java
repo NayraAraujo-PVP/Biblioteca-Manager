@@ -13,6 +13,7 @@ import java.time.ZoneId;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public class RepositorioEmprestimos {
     private final Map<Integer, EntidadeEmprestimo> emprestimoMap = new HashMap<>();
@@ -43,17 +44,20 @@ public class RepositorioEmprestimos {
         dataManager.salvar(EMPRESTIMOS_FILENAME, emprestimoMap.values());
     }
 
-    public boolean contemId(int id) {
-        return emprestimoMap.containsKey(id);
-    }
-
-    public Emprestimo buscar(int id) {
+    public Optional<Emprestimo> buscar(int id) {
         EntidadeEmprestimo entidadeEmprestimo = emprestimoMap.get(id);
 
-        Usuario usuario = repositorioUsuarios.buscarUsuario(entidadeEmprestimo.getCpfUsuario());
-        Livro livro = repositorioLivros.buscar(entidadeEmprestimo.getIdLivro());
+        if (entidadeEmprestimo == null) return Optional.empty();
 
-        return entidadeEmprestimo.converterParaEmprestimo(usuario, livro);
+        Optional<Usuario> usuarioOpt = repositorioUsuarios.buscarUsuario(entidadeEmprestimo.getCpfUsuario());
+        Optional<Livro> livroOpt = repositorioLivros.buscar(entidadeEmprestimo.getIdLivro());
+
+        if (usuarioOpt.isEmpty() || livroOpt.isEmpty()) return Optional.empty();
+
+        Usuario usuario = usuarioOpt.get();
+        Livro livro = livroOpt.get();
+
+        return Optional.of(entidadeEmprestimo.converterParaEmprestimo(usuario, livro));
     }
 
     public int getProximoId() {
@@ -65,7 +69,10 @@ public class RepositorioEmprestimos {
                 .filter(entidadeEmprestimo -> !somenteAtivos || !entidadeEmprestimo.isDevolvido())
                 .filter(entidadeEmprestimo -> entidadeEmprestimo.getCpfUsuario().equals(usuario.getCpf()))
                 .map(entidadeEmprestimo -> {
-                    Livro livro = repositorioLivros.buscar(entidadeEmprestimo.getIdLivro());
+                    Optional<Livro> livroOpt = repositorioLivros.buscar(entidadeEmprestimo.getIdLivro());
+                    if (livroOpt.isEmpty()) return null;
+                    Livro livro = livroOpt.get();
+
                     return entidadeEmprestimo.converterParaEmprestimo(usuario, livro);
                 })
                 .toList();
@@ -81,8 +88,14 @@ public class RepositorioEmprestimos {
                     return retirada.isAfter(inicio) && retirada.isBefore(fim);
                 })
                 .map(entidadeEmprestimo -> {
-                    Usuario usuario = repositorioUsuarios.buscarUsuario(entidadeEmprestimo.getCpfUsuario());
-                    Livro livro = repositorioLivros.buscar(entidadeEmprestimo.getIdLivro());
+                    Optional<Usuario> usuarioOpt = repositorioUsuarios.buscarUsuario(entidadeEmprestimo.getCpfUsuario());
+                    if (usuarioOpt.isEmpty()) return null;
+                    Usuario usuario = usuarioOpt.get();
+
+                    Optional<Livro> livroOpt = repositorioLivros.buscar(entidadeEmprestimo.getIdLivro());
+                    if (livroOpt.isEmpty()) return null;
+                    Livro livro = livroOpt.get();
+
                     return entidadeEmprestimo.converterParaEmprestimo(usuario, livro);
                 })
                 .toList();
@@ -99,8 +112,14 @@ public class RepositorioEmprestimos {
                     return devolvido.isAfter(inicio) && devolvido.isBefore(fim);
                 })
                 .map(entidadeEmprestimo -> {
-                    Usuario usuario = repositorioUsuarios.buscarUsuario(entidadeEmprestimo.getCpfUsuario());
-                    Livro livro = repositorioLivros.buscar(entidadeEmprestimo.getIdLivro());
+                    Optional<Usuario> usuarioOpt = repositorioUsuarios.buscarUsuario(entidadeEmprestimo.getCpfUsuario());
+                    if (usuarioOpt.isEmpty()) return null;
+                    Usuario usuario = usuarioOpt.get();
+
+                    Optional<Livro> livroOpt = repositorioLivros.buscar(entidadeEmprestimo.getIdLivro());
+                    if (livroOpt.isEmpty()) return null;
+                    Livro livro = livroOpt.get();
+
                     return entidadeEmprestimo.converterParaEmprestimo(usuario, livro);
                 })
                 .toList();
@@ -110,7 +129,10 @@ public class RepositorioEmprestimos {
         return emprestimoMap.values().stream()
                 .filter(entidadeEmprestimo -> entidadeEmprestimo.getIdLivro() == livro.getId() && !entidadeEmprestimo.isDevolvido())
                 .map(entidadeEmprestimo -> {
-                    Usuario usuario = repositorioUsuarios.buscarUsuario(entidadeEmprestimo.getCpfUsuario());
+                    Optional<Usuario> usuarioOpt = repositorioUsuarios.buscarUsuario(entidadeEmprestimo.getCpfUsuario());
+                    if (usuarioOpt.isEmpty()) return null;
+                    Usuario usuario = usuarioOpt.get();
+
                     return entidadeEmprestimo.converterParaEmprestimo(usuario, livro);
                 })
                 .toList();

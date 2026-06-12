@@ -1,7 +1,212 @@
-[ {
-  "nome" : "Nay",
-  "cpf" : "234",
-  "emprestimosAtivos" : 1,
-  "departamento" : "DEG",
-  "titulacaoAcademica" : "DOUTOR"
-} ]
+[
+  {
+    "nome": "Roberto Almeida",
+    "cpf": "10987654321",
+    "departamento": "DEG",
+    "titulacaoAcademica": "DOUTOR",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Bianca Ferreira",
+    "cpf": "70212345602",
+    "departamento": "DFI",
+    "titulacaoAcademica": "DOUTOR",
+    "emprestimosAtivos": 1
+  },
+  {
+    "nome": "Celso Guimarães",
+    "cpf": "70312345603",
+    "departamento": "DCC",
+    "titulacaoAcademica": "MESTRE",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Daniela Rezende",
+    "cpf": "70412345604",
+    "departamento": "DEG",
+    "titulacaoAcademica": "DOUTOR",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Juliana Silva",
+    "cpf": "43987654344",
+    "departamento": "DEG",
+    "titulacaoAcademica": "DOUTOR",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Eduardo Moreira",
+    "cpf": "70512345605",
+    "departamento": "DEX",
+    "titulacaoAcademica": "ESPECIALISTA",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Fabiana Castro",
+    "cpf": "70612345606",
+    "departamento": "DEA",
+    "titulacaoAcademica": "DOUTOR",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Gustavo Peixoto",
+    "cpf": "70712345607",
+    "departamento": "DFI",
+    "titulacaoAcademica": "DOUTOR",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Helena Viana",
+    "cpf": "70812345608",
+    "departamento": "DCC",
+    "titulacaoAcademica": "MESTRE",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Igor Machado",
+    "cpf": "70912345609",
+    "departamento": "DEG",
+    "titulacaoAcademica": "DOUTOR",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Júlia Farias",
+    "cpf": "71012345610",
+    "departamento": "DEX",
+    "titulacaoAcademica": "DOUTOR",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Kleber Assis",
+    "cpf": "71112345611",
+    "departamento": "DEA",
+    "titulacaoAcademica": "MESTRE",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Larissa Barros",
+    "cpf": "71212345612",
+    "departamento": "DFI",
+    "titulacaoAcademica": "DOUTOR",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Marcelo Neves",
+    "cpf": "71312345613",
+    "departamento": "DCC",
+    "titulacaoAcademica": "DOUTOR",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Natália Ramos",
+    "cpf": "71412345614",
+    "departamento": "DEG",
+    "titulacaoAcademica": "MESTRE",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Otávio Lins",
+    "cpf": "71512345615",
+    "departamento": "DEX",
+    "titulacaoAcademica": "ESPECIALISTA",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Paula Tavares",
+    "cpf": "71612345616",
+    "departamento": "DEA",
+    "titulacaoAcademica": "DOUTOR",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Rafael Pires",
+    "cpf": "71712345617",
+    "departamento": "DFI",
+    "titulacaoAcademica": "MESTRE",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Simone Moura",
+    "cpf": "71812345618",
+    "departamento": "DCC",
+    "titulacaoAcademica": "DOUTOR",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Thiago Mendes",
+    "cpf": "71912345619",
+    "departamento": "DEG",
+    "titulacaoAcademica": "DOUTOR",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Úrsula Campos",
+    "cpf": "72012345620",
+    "departamento": "DEX",
+    "titulacaoAcademica": "MESTRE",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Valdir Cardoso",
+    "cpf": "72112345621",
+    "departamento": "DEA",
+    "titulacaoAcademica": "DOUTOR",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Wanessa Dias",
+    "cpf": "72212345622",
+    "departamento": "DFI",
+    "titulacaoAcademica": "DOUTOR",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Xavier Batista",
+    "cpf": "72312345623",
+    "departamento": "DCC",
+    "titulacaoAcademica": "ESPECIALISTA",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Yara Fonseca",
+    "cpf": "72412345624",
+    "departamento": "DEG",
+    "titulacaoAcademica": "MESTRE",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Zeca Teixeira",
+    "cpf": "72512345625",
+    "departamento": "DEX",
+    "titulacaoAcademica": "DOUTOR",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Amanda Silveira",
+    "cpf": "72612345626",
+    "departamento": "DEA",
+    "titulacaoAcademica": "MESTRE",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Bruno Freitas",
+    "cpf": "72712345627",
+    "departamento": "DFI",
+    "titulacaoAcademica": "DOUTOR",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Carolina Monteiro",
+    "cpf": "72812345628",
+    "departamento": "DCC",
+    "titulacaoAcademica": "DOUTOR",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Diego Almeida",
+    "cpf": "72912345629",
+    "departamento": "DEG",
+    "titulacaoAcademica": "ESPECIALISTA",
+    "emprestimosAtivos": 0
+  }
+]

@@ -1,6 +1,182 @@
-[ {
-  "nome" : "Vinicius",
-  "cpf" : "123",
-  "emprestimosAtivos" : 1,
-  "matricula" : "321"
-} ]
+[
+  {
+    "nome": "Ana Silva",
+    "cpf": "85492310455",
+    "matricula": "202610001",
+    "emprestimosAtivos": 1
+  },
+  {
+    "nome": "Carlos Mendes",
+    "cpf": "12345098765",
+    "matricula": "202610002",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Beatriz Souza",
+    "cpf": "98765432100",
+    "matricula": "202610003",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Daniel Costa",
+    "cpf": "45612378901",
+    "matricula": "202610004",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Eduarda Lima",
+    "cpf": "32165498711",
+    "matricula": "202610005",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Felipe Gomes",
+    "cpf": "65478912322",
+    "matricula": "202610006",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Gabriela Alves",
+    "cpf": "14725836933",
+    "matricula": "202610007",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Henrique Rocha",
+    "cpf": "25836914744",
+    "matricula": "202610008",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Isabela Ribeiro",
+    "cpf": "36914725855",
+    "matricula": "202610009",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "João Pedro Santos",
+    "cpf": "74185296366",
+    "matricula": "202610010",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Karina Mendes",
+    "cpf": "85296374177",
+    "matricula": "202610011",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Lucas Fernandes",
+    "cpf": "96374185288",
+    "matricula": "202610012",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Mariana Carvalho",
+    "cpf": "15975348699",
+    "matricula": "202610013",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Nicolas Pereira",
+    "cpf": "75315948600",
+    "matricula": "202610014",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Olívia Martins",
+    "cpf": "48615975311",
+    "matricula": "202610015",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Pedro Henrique",
+    "cpf": "35795146822",
+    "matricula": "202610016",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Quintino Silva",
+    "cpf": "95135746833",
+    "matricula": "202610017",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Rafaela Araujo",
+    "cpf": "46895135744",
+    "matricula": "202610018",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Samuel Pinto",
+    "cpf": "12398745655",
+    "matricula": "202610019",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Thaís Barbosa",
+    "cpf": "98712365466",
+    "matricula": "202610020",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Uriel Castro",
+    "cpf": "45632178977",
+    "matricula": "202610021",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Vitória Cardoso",
+    "cpf": "78965412388",
+    "matricula": "202610022",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Wagner Dias",
+    "cpf": "32178945699",
+    "matricula": "202610023",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Ximena Freitas",
+    "cpf": "65412398700",
+    "matricula": "202610024",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Yuri Monteiro",
+    "cpf": "14736925811",
+    "matricula": "202610025",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Zélia Nunes",
+    "cpf": "25814736922",
+    "matricula": "202610026",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Artur Moura",
+    "cpf": "36925814733",
+    "matricula": "202610027",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Bruna Teixeira",
+    "cpf": "74196385244",
+    "matricula": "202610028",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Caio Farias",
+    "cpf": "85274196355",
+    "matricula": "202610029",
+    "emprestimosAtivos": 0
+  },
+  {
+    "nome": "Débora Moraes",
+    "cpf": "96385274166",
+    "matricula": "202610030",
+    "emprestimosAtivos": 0
+  }
+]

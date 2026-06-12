@@ -18,8 +18,7 @@ public class ServicoLivros {
     }
 
     public Optional<Livro> buscarPorId(int id) {
-        if(repositorioLivros.contemId(id)) return Optional.of(repositorioLivros.buscar(id));
-        else return Optional.empty();
+        return repositorioLivros.buscar(id);
     }
 
     public void cadastrarLivro(String titulo, String autor, String categoria, int quantidadeTotal) {
@@ -30,9 +29,11 @@ public class ServicoLivros {
     }
 
     public void alteraQuantidadeTotal(int id, int quantidadeTotal) {
-        if(!repositorioLivros.contemId(id)) return;
+        Optional<Livro> livroOpt = repositorioLivros.buscar(id);
 
-        Livro livro = repositorioLivros.buscar(id);
+        if (livroOpt.isEmpty()) return;
+
+        Livro livro = livroOpt.get();
 
         if(quantidadeTotal < livro.getQuantidadeEmprestada()) return;
 
@@ -42,9 +43,11 @@ public class ServicoLivros {
     }
 
     public void editarLivro(int id, String titulo, String autor, String categoria) {
-        if(!repositorioLivros.contemId(id)) return;
+        Optional<Livro> livroOpt = repositorioLivros.buscar(id);
 
-        Livro livro = repositorioLivros.buscar(id);
+        if (livroOpt.isEmpty()) return;
+
+        Livro livro = livroOpt.get();
 
         livro.setTitulo(titulo);
         livro.setAutor(autor);

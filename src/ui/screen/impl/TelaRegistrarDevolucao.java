@@ -1,7 +1,6 @@
 package ui.screen.impl;
 
 import domain.Emprestimo;
-import domain.Livro;
 import domain.Usuario;
 import services.ServicoEmprestimos;
 import services.ServicoUsuarios;

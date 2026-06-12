@@ -44,6 +44,11 @@ public class RepositorioUsuarios {
         return usuarioMap.containsKey(cpf);
     }
 
+    public boolean contemMatricula(String matricula) {
+        return alunoMap.values().stream()
+                .anyMatch(entidadeAluno -> entidadeAluno.getMatricula().equals(matricula));
+    }
+
     public List<Aluno> buscarAlunos(String termoPesquisa) {
         return alunoMap.values().stream()
                 .filter(entidadeAluno -> entidadeAluno.getCpf().toLowerCase().contains(termoPesquisa.toLowerCase())
@@ -95,15 +100,15 @@ public class RepositorioUsuarios {
         if(usuario instanceof Docente docente) salvar(docente);
     }
 
-    public Aluno buscarAluno(String cpf) {
-        return alunoMap.get(cpf).converterParaAluno();
+    public Optional<Aluno> buscarAluno(String cpf) {
+        return Optional.ofNullable(alunoMap.get(cpf)).map(EntidadeAluno::converterParaAluno);
     }
 
-    public Docente buscarDocente(String cpf) {
-        return docenteMap.get(cpf).converterParaDocente();
+    public Optional<Docente> buscarDocente(String cpf) {
+        return Optional.ofNullable(docenteMap.get(cpf)).map(EntidadeDocente::converterParaDocente);
     }
 
-    public Usuario buscarUsuario(String cpf) {
-        return usuarioMap.get(cpf).converterParaUsuario();
+    public Optional<Usuario> buscarUsuario(String cpf) {
+        return Optional.ofNullable(usuarioMap.get(cpf)).map(EntidadeUsuario::converterParaUsuario);
     }
 }

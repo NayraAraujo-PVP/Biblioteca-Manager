@@ -1,12 +1,9 @@
 package ui.screen.impl;
 
-import domain.Docente;
 import domain.Emprestimo;
-import domain.Livro;
 import domain.Usuario;
 import services.ServicoEmprestimos;
 import services.ServicoUsuarios;
-import ui.components.ComponenteInputNumero;
 import ui.components.ComponenteVisualizacaoBlocos;
 import ui.screen.Tela;
 import ui.screen.TelaEnum;

@@ -50,9 +50,11 @@ public class ServicoEmprestimos {
     }
 
     public Optional<Emprestimo> realizarDevolucao(int id) {
-        if(!repositorioEmprestimos.contemId(id)) return Optional.empty();
+        Optional<Emprestimo> emprestimoOpt = repositorioEmprestimos.buscar(id);
 
-        Emprestimo emprestimo = repositorioEmprestimos.buscar(id);
+        if (emprestimoOpt.isEmpty()) return emprestimoOpt;
+
+        Emprestimo emprestimo = emprestimoOpt.get();
 
         if(emprestimo.isDevolvido()) return Optional.empty();
 

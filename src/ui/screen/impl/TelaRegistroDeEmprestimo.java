@@ -88,10 +88,24 @@ public class TelaRegistroDeEmprestimo extends Tela {
     }
 
     private void realizarEmprestimo(Usuario usurio, Livro livro) {
+        if (!livro.verificaDisponivel()) {
+            System.out.println("Impossível realizar o empréstimo porque o livro não está disponível");
+            quebraLinha();
+            trocarTela(TelaEnum.MENU_PRINCIPAL);
+            return;
+        }
+
+        if (!usurio.verificaLimiteEmprestimos()) {
+            System.out.println("Impossível realizar o empréstimo porque o usuário já atingiu o limite de empréstimos");
+            quebraLinha();
+            trocarTela(TelaEnum.MENU_PRINCIPAL);
+            return;
+        }
+
         Optional<Emprestimo> emprestimoRealizado = servicoEmprestimos.realizarEmprestimo(usurio, livro);
 
         if(emprestimoRealizado.isEmpty()) {
-            System.out.println("Não foi possível realizar o empréstimo");
+            System.out.println("Erro inesperado ao realizar o emprestimo");
         }
         else {
             Emprestimo emprestimo = emprestimoRealizado.get();

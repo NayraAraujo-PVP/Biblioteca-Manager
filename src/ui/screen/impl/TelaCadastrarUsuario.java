@@ -46,6 +46,14 @@ public class TelaCadastrarUsuario extends Tela {
         System.out.print("Matrícula: ");
         String matricula = input.nextLine();
 
+        if(servicoUsuarios.contemMatricula(matricula)) {
+            quebraLinha();
+            System.out.println("Essa matrícula já está cadastrada");
+            quebraLinha();
+            voltarMenu();
+            return;
+        }
+
         servicoUsuarios.cadastrarAluno(cpf, nome, matricula);
 
         quebraLinha();

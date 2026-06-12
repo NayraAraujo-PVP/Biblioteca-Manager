@@ -1,85 +1,322 @@
-[ {
-  "id" : 1,
-  "titulo" : "O Senhor dos Anéis",
-  "autor" : "b",
-  "categoria" : "Ficção",
-  "quantidadeTotal" : 5,
-  "quantidadeEmprestada" : 0
-}, {
-  "id" : 2,
-  "titulo" : "d",
-  "autor" : "e",
-  "categoria" : "f",
-  "quantidadeTotal" : 50,
-  "quantidadeEmprestada" : 0
-}, {
-  "id" : 3,
-  "titulo" : "x",
-  "autor" : "y",
-  "categoria" : "z",
-  "quantidadeTotal" : 0,
-  "quantidadeEmprestada" : 0
-}, {
-  "id" : 4,
-  "titulo" : "m",
-  "autor" : "n",
-  "categoria" : "o",
-  "quantidadeTotal" : 100,
-  "quantidadeEmprestada" : 2
-}, {
-  "id" : 5,
-  "titulo" : "w",
-  "autor" : "w",
-  "categoria" : "w",
-  "quantidadeTotal" : 1,
-  "quantidadeEmprestada" : 0
-}, {
-  "id" : 6,
-  "titulo" : "k",
-  "autor" : "k",
-  "categoria" : "k",
-  "quantidadeTotal" : 2,
-  "quantidadeEmprestada" : 0
-}, {
-  "id" : 7,
-  "titulo" : "m",
-  "autor" : "s",
-  "categoria" : "n",
-  "quantidadeTotal" : 0,
-  "quantidadeEmprestada" : 0
-}, {
-  "id" : 8,
-  "titulo" : "aaaaaa",
-  "autor" : "aaaaa",
-  "categoria" : "aaaaa",
-  "quantidadeTotal" : 2,
-  "quantidadeEmprestada" : 0
-}, {
-  "id" : 9,
-  "titulo" : "s",
-  "autor" : "r",
-  "categoria" : "f",
-  "quantidadeTotal" : 0,
-  "quantidadeEmprestada" : 0
-}, {
-  "id" : 10,
-  "titulo" : "2",
-  "autor" : "3",
-  "categoria" : "45",
-  "quantidadeTotal" : 1,
-  "quantidadeEmprestada" : 0
-}, {
-  "id" : 11,
-  "titulo" : "a",
-  "autor" : "b",
-  "categoria" : "c",
-  "quantidadeTotal" : 0,
-  "quantidadeEmprestada" : 0
-}, {
-  "id" : 12,
-  "titulo" : "a",
-  "autor" : "b",
-  "categoria" : "c",
-  "quantidadeTotal" : 0,
-  "quantidadeEmprestada" : 0
-} ]
+[
+  {
+    "id": 1,
+    "titulo": "Cálculo 1",
+    "autor": "James Stewart",
+    "categoria": "Exatas",
+    "quantidadeTotal": 50,
+    "quantidadeEmprestada": 1
+  },
+  {
+    "id": 2,
+    "titulo": "Cálculo 2",
+    "autor": "James Stewart",
+    "categoria": "Exatas",
+    "quantidadeTotal": 45,
+    "quantidadeEmprestada": 0
+  },
+  {
+    "id": 3,
+    "titulo": "Um Curso de Cálculo - Vol. 1",
+    "autor": "Hamilton Luiz Guidorizzi",
+    "categoria": "Exatas",
+    "quantidadeTotal": 30,
+    "quantidadeEmprestada": 1
+  },
+  {
+    "id": 4,
+    "titulo": "Fundamentos de Física - Vol. 1",
+    "autor": "David Halliday",
+    "categoria": "Exatas",
+    "quantidadeTotal": 60,
+    "quantidadeEmprestada": 0
+  },
+  {
+    "id": 5,
+    "titulo": "Fundamentos de Física - Vol. 3",
+    "autor": "David Halliday",
+    "categoria": "Exatas",
+    "quantidadeTotal": 55,
+    "quantidadeEmprestada": 0
+  },
+  {
+    "id": 6,
+    "titulo": "Álgebra Linear",
+    "autor": "José Luiz Boldrini",
+    "categoria": "Exatas",
+    "quantidadeTotal": 35,
+    "quantidadeEmprestada": 0
+  },
+  {
+    "id": 7,
+    "titulo": "Geometria Analítica",
+    "autor": "Paulo Boulos",
+    "categoria": "Exatas",
+    "quantidadeTotal": 40,
+    "quantidadeEmprestada": 0
+  },
+  {
+    "id": 8,
+    "titulo": "Equações Diferenciais",
+    "autor": "Dennis G. Zill",
+    "categoria": "Exatas",
+    "quantidadeTotal": 25,
+    "quantidadeEmprestada": 0
+  },
+  {
+    "id": 9,
+    "titulo": "Probabilidade e Estatística para Engenharia",
+    "autor": "Douglas C. Montgomery",
+    "categoria": "Exatas",
+    "quantidadeTotal": 30,
+    "quantidadeEmprestada": 0
+  },
+  {
+    "id": 10,
+    "titulo": "Engenharia de Controle Moderno",
+    "autor": "Katsuhiko Ogata",
+    "categoria": "Engenharia",
+    "quantidadeTotal": 20,
+    "quantidadeEmprestada": 0
+  },
+  {
+    "id": 11,
+    "titulo": "Sistemas de Controle Modernos",
+    "autor": "Richard C. Dorf",
+    "categoria": "Engenharia",
+    "quantidadeTotal": 15,
+    "quantidadeEmprestada": 0
+  },
+  {
+    "id": 12,
+    "titulo": "Sistemas Digitais: Princípios e Aplicações",
+    "autor": "Ronald J. Tocci",
+    "categoria": "Engenharia",
+    "quantidadeTotal": 25,
+    "quantidadeEmprestada": 0
+  },
+  {
+    "id": 13,
+    "titulo": "Projeto Digital com VHDL",
+    "autor": "Roberto D'Amore",
+    "categoria": "Engenharia",
+    "quantidadeTotal": 12,
+    "quantidadeEmprestada": 0
+  },
+  {
+    "id": 14,
+    "titulo": "Sinais e Sistemas",
+    "autor": "Alan V. Oppenheim",
+    "categoria": "Engenharia",
+    "quantidadeTotal": 18,
+    "quantidadeEmprestada": 0
+  },
+  {
+    "id": 15,
+    "titulo": "Circuitos Elétricos",
+    "autor": "James W. Nilsson",
+    "categoria": "Engenharia",
+    "quantidadeTotal": 35,
+    "quantidadeEmprestada": 0
+  },
+  {
+    "id": 16,
+    "titulo": "Fundamentos de Circuitos Elétricos",
+    "autor": "Matthew N. O. Sadiku",
+    "categoria": "Engenharia",
+    "quantidadeTotal": 30,
+    "quantidadeEmprestada": 0
+  },
+  {
+    "id": 17,
+    "titulo": "Microeletrônica",
+    "autor": "Adel S. Sedra",
+    "categoria": "Engenharia",
+    "quantidadeTotal": 15,
+    "quantidadeEmprestada": 0
+  },
+  {
+    "id": 18,
+    "titulo": "Controladores Lógicos Programáveis",
+    "autor": "Claiton Moro Franchi",
+    "categoria": "Engenharia",
+    "quantidadeTotal": 10,
+    "quantidadeEmprestada": 0
+  },
+  {
+    "id": 19,
+    "titulo": "Sistemas Embarcados",
+    "autor": "Eduardo Marques",
+    "categoria": "Engenharia",
+    "quantidadeTotal": 14,
+    "quantidadeEmprestada": 0
+  },
+  {
+    "id": 20,
+    "titulo": "Estática: Mecânica para Engenharia",
+    "autor": "R. C. Hibbeler",
+    "categoria": "Engenharia",
+    "quantidadeTotal": 28,
+    "quantidadeEmprestada": 0
+  },
+  {
+    "id": 21,
+    "titulo": "Dinâmica: Mecânica para Engenharia",
+    "autor": "R. C. Hibbeler",
+    "categoria": "Engenharia",
+    "quantidadeTotal": 25,
+    "quantidadeEmprestada": 0
+  },
+  {
+    "id": 22,
+    "titulo": "Resistência dos Materiais",
+    "autor": "R. C. Hibbeler",
+    "categoria": "Engenharia",
+    "quantidadeTotal": 30,
+    "quantidadeEmprestada": 0
+  },
+  {
+    "id": 23,
+    "titulo": "Fenômenos de Transporte",
+    "autor": "R. Byron Bird",
+    "categoria": "Engenharia",
+    "quantidadeTotal": 20,
+    "quantidadeEmprestada": 0
+  },
+  {
+    "id": 24,
+    "titulo": "Mecânica dos Fluidos",
+    "autor": "Robert W. Fox",
+    "categoria": "Engenharia",
+    "quantidadeTotal": 22,
+    "quantidadeEmprestada": 0
+  },
+  {
+    "id": 25,
+    "titulo": "Termodinâmica",
+    "autor": "Yunus A. Çengel",
+    "categoria": "Engenharia",
+    "quantidadeTotal": 25,
+    "quantidadeEmprestada": 0
+  },
+  {
+    "id": 26,
+    "titulo": "Java: Como Programar",
+    "autor": "Paul Deitel",
+    "categoria": "Computação",
+    "quantidadeTotal": 40,
+    "quantidadeEmprestada": 0
+  },
+  {
+    "id": 27,
+    "titulo": "Código Limpo",
+    "autor": "Robert C. Martin",
+    "categoria": "Computação",
+    "quantidadeTotal": 15,
+    "quantidadeEmprestada": 0
+  },
+  {
+    "id": 28,
+    "titulo": "Estruturas de Dados e Algoritmos em Java",
+    "autor": "Michael T. Goodrich",
+    "categoria": "Computação",
+    "quantidadeTotal": 20,
+    "quantidadeEmprestada": 0
+  },
+  {
+    "id": 29,
+    "titulo": "Engenharia de Software",
+    "autor": "Ian Sommerville",
+    "categoria": "Computação",
+    "quantidadeTotal": 18,
+    "quantidadeEmprestada": 0
+  },
+  {
+    "id": 30,
+    "titulo": "Introdução à Lógica de Programação",
+    "autor": "André Luiz Villar Forbellone",
+    "categoria": "Computação",
+    "quantidadeTotal": 35,
+    "quantidadeEmprestada": 0
+  },
+  {
+    "id": 31,
+    "titulo": "Python para Análise de Dados",
+    "autor": "Wes McKinney",
+    "categoria": "Computação",
+    "quantidadeTotal": 25,
+    "quantidadeEmprestada": 0
+  },
+  {
+    "id": 32,
+    "titulo": "Inteligência Artificial: Uma Abordagem Moderna",
+    "autor": "Stuart Russell",
+    "categoria": "Computação",
+    "quantidadeTotal": 12,
+    "quantidadeEmprestada": 0
+  },
+  {
+    "id": 33,
+    "titulo": "Arquitetura e Organização de Computadores",
+    "autor": "William Stallings",
+    "categoria": "Computação",
+    "quantidadeTotal": 20,
+    "quantidadeEmprestada": 0
+  },
+  {
+    "id": 34,
+    "titulo": "Sistemas Operacionais Modernos",
+    "autor": "Andrew S. Tanenbaum",
+    "categoria": "Computação",
+    "quantidadeTotal": 22,
+    "quantidadeEmprestada": 0
+  },
+  {
+    "id": 35,
+    "titulo": "Redes de Computadores",
+    "autor": "Kurose",
+    "categoria": "Computação",
+    "quantidadeTotal": 30,
+    "quantidadeEmprestada": 0
+  },
+  {
+    "id": 36,
+    "titulo": "Princípios de Química",
+    "autor": "Peter Atkins",
+    "categoria": "Exatas",
+    "quantidadeTotal": 40,
+    "quantidadeEmprestada": 0
+  },
+  {
+    "id": 37,
+    "titulo": "Química Geral",
+    "autor": "John B. Russell",
+    "categoria": "Exatas",
+    "quantidadeTotal": 35,
+    "quantidadeEmprestada": 0
+  },
+  {
+    "id": 38,
+    "titulo": "Web Analytics 2.0",
+    "autor": "Avinash Kaushik",
+    "categoria": "Negócios",
+    "quantidadeTotal": 10,
+    "quantidadeEmprestada": 0
+  },
+  {
+    "id": 39,
+    "titulo": "Google Ads: O Guia Definitivo",
+    "autor": "Brad Geddes",
+    "categoria": "Negócios",
+    "quantidadeTotal": 8,
+    "quantidadeEmprestada": 0
+  },
+  {
+    "id": 40,
+    "titulo": "Gestão da Qualidade",
+    "autor": "Vicente Falconi",
+    "categoria": "Engenharia",
+    "quantidadeTotal": 15,
+    "quantidadeEmprestada": 0
+  }
+]

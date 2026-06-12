@@ -20,6 +20,10 @@ public class ServicoUsuarios {
         return repositorioUsuarios.contemCpf(cpf);
     }
 
+    public boolean contemMatricula(String matricula) {
+        return repositorioUsuarios.contemMatricula(matricula);
+    }
+
     public List<Aluno> buscarAlunos(String termoPesquisa) {
         return repositorioUsuarios.buscarAlunos(termoPesquisa);
     }
@@ -34,6 +38,7 @@ public class ServicoUsuarios {
 
     public void cadastrarAluno(String cpf, String nome, String matricula) {
         if(contemCpf(cpf)) return;
+        if(contemMatricula(matricula)) return;
 
         Aluno aluno = new Aluno(cpf, nome, matricula);
 
@@ -49,9 +54,11 @@ public class ServicoUsuarios {
     }
 
     public void editarAluno(String cpf, String nome, String matricula) {
-        if(!repositorioUsuarios.contemCpf(cpf)) return;
+        Optional<Aluno> alunoOpt = repositorioUsuarios.buscarAluno(cpf);
 
-        Aluno aluno = repositorioUsuarios.buscarAluno(cpf);
+        if(alunoOpt.isEmpty()) return;
+
+        Aluno aluno = alunoOpt.get();
 
         aluno.setMatricula(matricula);
         aluno.setNome(nome);
@@ -60,9 +67,11 @@ public class ServicoUsuarios {
     }
 
     public void editarDocente(String cpf, String nome, String departamento, TitulacaoAcademica titulacaoAcademica) {
-        if(!repositorioUsuarios.contemCpf(cpf)) return;
+        Optional<Docente> docenteOpt = repositorioUsuarios.buscarDocente(cpf);
 
-        Docente docente = repositorioUsuarios.buscarDocente(cpf);
+        if(docenteOpt.isEmpty()) return;
+
+        Docente docente = docenteOpt.get();
 
         docente.setNome(nome);
         docente.setDepartamento(departamento);
