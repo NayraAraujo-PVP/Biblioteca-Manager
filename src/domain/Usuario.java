@@ -65,7 +65,45 @@ public abstract class Usuario {
     public int getEmprestimosAtivos() {
         return emprestimosAtivos;
     }
-}
 
     /**
      * Incrementa o contador de empréstimos ativos, caso o usuário não tenha atingido o limite permitido.*/
+    public void addEmprestimo() {
+        if(verificaLimiteEmprestimos()) {
+            emprestimosAtivos++;
+        }
+    }
+
+    public abstract boolean verificaLimiteEmprestimos();
+
+    /**
+     * Decrementa o contador de empréstimos ativos, caso o usuário tenha pelo menos 1.*/
+    public void removeEmprestimo() {
+        if(emprestimosAtivos > 0) {
+            emprestimosAtivos--;
+        }
+    }
+
+    /**
+     * Retorna o prazo de permanência do item emprestado.
+     *
+     * @return o prazo em dias
+     */
+    public abstract int prazoPermanencia();
+
+    /**
+     * Calcula a quantidade de dias de atraso com base no período de permanência permitido.
+     *
+     * @param diasPermanenciaLivro a quantidade total de dias que o livro ficou com o usuário.
+     * @return o número de dias de atraso; retorna 0 caso não haja atraso.
+     */
+    public abstract int calculaDiasAtraso(int diasPermanenciaLivro);
+
+    /**
+     * Calcula o valor da multa com base nos dias de atraso.
+     *
+     * @param diasDeAtraso a quantidade de dias em atraso.
+     * @return o valor total da multa, ou null caso não haja atraso.
+     */
+    public abstract Double calculaMulta(int diasDeAtraso);
+}

@@ -1,3 +1,13 @@
+import datamanager.DataManager;
+import datamanager.JsonFileDataManager;
+import repository.RepositorioEmprestimos;
+import repository.RepositorioLivros;
+import repository.RepositorioUsuarios;
+import services.ServicoEmprestimos;
+import services.ServicoLivros;
+import services.ServicoUsuarios;
+import ui.UserInterface;
+
 /**
  * Classe principal de entrada do sistema de gerenciamento de biblioteca.
  * Responsável por realizar a composição dos objetos, instanciando repositórios,
