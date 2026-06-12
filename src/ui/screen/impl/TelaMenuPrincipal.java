@@ -82,6 +82,7 @@ public class TelaMenuPrincipal extends Tela {
 
         componenteEscolha.registrarOpcao("Emprestados", this::consultarEmprestados);
         componenteEscolha.registrarOpcao("Devolvidos", this::consultarDevolvidos);
+        componenteEscolha.registrarOpcao("Por livro", this::consultarPorLivros);
         componenteEscolha.registrarOpcao("Voltar", this::voltarMenu);
 
         componenteEscolha.mostrarOpcoes();
@@ -93,5 +94,9 @@ public class TelaMenuPrincipal extends Tela {
 
     private void consultarDevolvidos() {
         trocarTela(TelaEnum.CONSULTA_DEVOLVIDOS);
+    }
+
+    private void consultarPorLivros() {
+        trocarTela(TelaEnum.CONSULTA_POR_LIVRO);
     }
 }

@@ -29,6 +29,10 @@ public class ServicoEmprestimos {
         return repositorioEmprestimos.buscarDataDevolucao(localDate);
     }
 
+    public List<Emprestimo> buscaEmprestimoPorLivro(Livro livro) {
+        return repositorioEmprestimos.buscaEmprestimoPorLivro(livro);
+    }
+
     public Optional<Emprestimo> realizarEmprestimo(Usuario usuario, Livro livro) {
         if(livro.verificaDisponivel() && usuario.verificaLimiteEmprestimos()) {
             int id = repositorioEmprestimos.getProximoId();

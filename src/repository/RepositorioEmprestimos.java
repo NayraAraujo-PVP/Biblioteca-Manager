@@ -105,4 +105,14 @@ public class RepositorioEmprestimos {
                 })
                 .toList();
     }
+
+    public List<Emprestimo> buscaEmprestimoPorLivro(Livro livro) {
+        return emprestimoMap.values().stream()
+                .filter(entidadeEmprestimo -> entidadeEmprestimo.getIdLivro() == livro.getId() && !entidadeEmprestimo.isDevolvido())
+                .map(entidadeEmprestimo -> {
+                    Usuario usuario = repositorioUsuarios.buscarUsuario(entidadeEmprestimo.getCpfUsuario());
+                    return entidadeEmprestimo.converterParaEmprestimo(usuario, livro);
+                })
+                .toList();
+    }
 }

@@ -10,7 +10,7 @@
   "titulo" : "d",
   "autor" : "e",
   "categoria" : "f",
-  "quantidadeTotal" : 0,
+  "quantidadeTotal" : 50,
   "quantidadeEmprestada" : 0
 }, {
   "id" : 3,
@@ -25,7 +25,7 @@
   "autor" : "n",
   "categoria" : "o",
   "quantidadeTotal" : 100,
-  "quantidadeEmprestada" : 0
+  "quantidadeEmprestada" : 2
 }, {
   "id" : 5,
   "titulo" : "w",

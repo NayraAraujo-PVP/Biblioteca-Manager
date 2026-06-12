@@ -1,7 +1,7 @@
 [ {
   "nome" : "Nay",
   "cpf" : "234",
-  "emprestimosAtivos" : 0,
+  "emprestimosAtivos" : 1,
   "departamento" : "DEG",
   "titulacaoAcademica" : "DOUTOR"
 } ]

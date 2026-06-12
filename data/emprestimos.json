@@ -22,4 +22,20 @@
   "dataDevolucao" : "2026-06-27T15:56:42.827Z",
   "valorMulta" : 1.0,
   "devolvido" : true
+}, {
+  "id" : 4,
+  "cpfUsuario" : "123",
+  "idLivro" : 4,
+  "dataRetirada" : "2026-06-12T00:06:49.729Z",
+  "dataDevolucao" : null,
+  "valorMulta" : null,
+  "devolvido" : false
+}, {
+  "id" : 5,
+  "cpfUsuario" : "234",
+  "idLivro" : 4,
+  "dataRetirada" : "2026-06-12T00:07:28.262Z",
+  "dataDevolucao" : null,
+  "valorMulta" : null,
+  "devolvido" : false
 } ]
