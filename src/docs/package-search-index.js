@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html","k":"18"},{"l":"domain"},{"l":"domain.enums"},{"l":"repository"},{"l":"services"},{"l":"ui"},{"l":"ui.components"},{"l":"ui.screen"},{"l":"ui.screen.impl"}];updateSearchResults();

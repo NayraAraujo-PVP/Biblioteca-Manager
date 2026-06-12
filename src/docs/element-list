@@ -1,0 +1,8 @@
+domain
+domain.enums
+repository
+services
+ui
+ui.components
+ui.screen
+ui.screen.impl

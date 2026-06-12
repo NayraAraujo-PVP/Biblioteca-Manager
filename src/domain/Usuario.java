@@ -65,6 +65,7 @@ public abstract class Usuario {
     public int getEmprestimosAtivos() {
         return emprestimosAtivos;
     }
+}
 
     /**
-     * Incrementa o contador de empréstimos ativos, caso o usuário não tenha atingido o limite permitido.
+     * Incrementa o contador de empréstimos ativos, caso o usuário não tenha atingido o limite permitido.*/
