@@ -310,3 +310,4 @@ public class TelaPesquisarUsuario extends Tela {
         servicoUsuarios.editarDocente(cpf, novoNome, novoDepartamento, novaTitulacaoAcademica);
         voltarMenu();
     }
+}
