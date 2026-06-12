@@ -45,6 +45,9 @@ public class UserInterface {
         TelaConsultaPorLivro telaConsultaPorLivro = new TelaConsultaPorLivro(telaManager, input, servicoLivros, servicoEmprestimos);
         telaManager.registrarTela(TelaEnum.CONSULTA_POR_LIVRO, telaConsultaPorLivro);
 
+        TelaConsultaHistoricoUsuario telaConsultaHistoricoUsuario = new TelaConsultaHistoricoUsuario(telaManager, input, servicoEmprestimos, servicoUsuarios);
+        telaManager.registrarTela(TelaEnum.CONSULTA_HISTORICO_USUARIO, telaConsultaHistoricoUsuario);
+
         telaManager.trocarTela(TelaEnum.MENU_PRINCIPAL);
     }
 

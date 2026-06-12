@@ -17,8 +17,8 @@ public class ServicoEmprestimos {
         this.repositorioEmprestimos = repositorioEmprestimos;
     }
 
-    public List<Emprestimo> buscarEmprestimosPara(Usuario usuario) {
-        return repositorioEmprestimos.buscarEmprestimosPara(usuario);
+    public List<Emprestimo> buscarEmprestimosPara(Usuario usuario, boolean somenteAtivos) {
+        return repositorioEmprestimos.buscarEmprestimosPara(usuario, somenteAtivos);
     }
 
     public List<Emprestimo> buscarPorDataRetirada(LocalDate localDate) {

@@ -59,7 +59,7 @@ public class TelaRegistrarDevolucao extends Tela {
     }
 
     private void solicitarEmprestimo(Usuario usuario) {
-        List<Emprestimo> emprestimosList = servicoEmprestimos.buscarEmprestimosPara(usuario);
+        List<Emprestimo> emprestimosList = servicoEmprestimos.buscarEmprestimosPara(usuario, true);
 
         if (emprestimosList.isEmpty()) {
             System.out.println("Esse usuário não contém emprestimos ativos!");
