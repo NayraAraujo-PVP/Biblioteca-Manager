@@ -73,6 +73,7 @@ public class EntidadeAluno extends EntidadeUsuario {
                 aluno.getMatricula()
         );
     }
+<<<<<<< HEAD
 }package entities;
 
 import domain.Aluno;
@@ -151,3 +152,6 @@ public class EntidadeAluno extends EntidadeUsuario {
 }
 }
 
+=======
+}
+>>>>>>> 84849df (Ajustando docentes, entidade aluno e TelaPUs)
